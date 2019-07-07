@@ -119,7 +119,7 @@
 
 
 
-  <meta name="keywords" content="Testing,">
+  <meta name="keywords" content="sql,">
 
 
 
@@ -130,18 +130,18 @@
 
 
 
-<meta name="description" content="Blog搭建准备环境 node &amp;amp;&amp;amp; git brew install nodenpm : brew install npmgit : brew install git   验证: node –versionnpm –versiongit –version   安装Hexo npm install -g hexo-cli    初始化Hexo hexo init &amp;lt;folde">
-<meta name="keywords" content="Testing">
+<meta name="description" content="hive中一般取topN时，row_number(),rank(),dense_ran()这三个函数就派上用场了，  rank()函数  此排序方法进行排序时，相同的排序是一样的，而且下一个不同值是跳着排序的。  row_number()函数  此方法不管排名是否有相同的，都按照顺序1，2，3…..n   dense_rank()函数  此方法对于排名相同的名次一样，且后面名次不跳跃 通过代码运行">
+<meta name="keywords" content="sql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github">
-<meta property="og:url" content="http://yoursite.com/2019/07/07/Start/index.html">
+<meta property="og:title" content="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/Hive/rank/index.html">
 <meta property="og:site_name" content="WHJason">
-<meta property="og:description" content="Blog搭建准备环境 node &amp;amp;&amp;amp; git brew install nodenpm : brew install npmgit : brew install git   验证: node –versionnpm –versiongit –version   安装Hexo npm install -g hexo-cli    初始化Hexo hexo init &amp;lt;folde">
+<meta property="og:description" content="hive中一般取topN时，row_number(),rank(),dense_ran()这三个函数就派上用场了，  rank()函数  此排序方法进行排序时，相同的排序是一样的，而且下一个不同值是跳着排序的。  row_number()函数  此方法不管排名是否有相同的，都按照顺序1，2，3…..n   dense_rank()函数  此方法对于排名相同的名次一样，且后面名次不跳跃 通过代码运行">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-07T05:53:21.636Z">
+<meta property="og:updated_time" content="2019-07-07T14:51:02.830Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github">
-<meta name="twitter:description" content="Blog搭建准备环境 node &amp;amp;&amp;amp; git brew install nodenpm : brew install npmgit : brew install git   验证: node –versionnpm –versiongit –version   安装Hexo npm install -g hexo-cli    初始化Hexo hexo init &amp;lt;folde">
+<meta name="twitter:title" content="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">
+<meta name="twitter:description" content="hive中一般取topN时，row_number(),rank(),dense_ran()这三个函数就派上用场了，  rank()函数  此排序方法进行排序时，相同的排序是一样的，而且下一个不同值是跳着排序的。  row_number()函数  此方法不管排名是否有相同的，都按照顺序1，2，3…..n   dense_rank()函数  此方法对于排名相同的名次一样，且后面名次不跳跃 通过代码运行">
 
 
 
@@ -171,13 +171,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/07/Start/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/07/Hive/rank/">
 
 
 
 
 
-  <title>Github | WHJason</title>
+  <title>Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法 | WHJason</title>
   
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Start/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Hive/rank/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WHJason">
@@ -331,7 +331,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Github</h2>
+          <h2 class="post-title" itemprop="name headline">Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法</h2>
         
 
         <div class="post-meta">
@@ -359,7 +359,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-07T13:53:21+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-07T22:51:02+08:00">
                 2019-07-07
               </time>
             
@@ -378,8 +378,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Github/" itemprop="url" rel="index">
-                    <span itemprop="name">Github</span>
+                  <a href="/categories/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
                   </a>
                 </span>
 
@@ -395,7 +395,7 @@
 
           
           
-             <span id="/2019/07/07/Start/" class="leancloud_visitors" data-flag-title="Github">
+             <span id="/2019/07/07/Hive/rank/" class="leancloud_visitors" data-flag-title="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -457,66 +457,213 @@
       
 
       
-        <h1 id="Blog搭建"><a href="#Blog搭建" class="headerlink" title="Blog搭建"></a>Blog搭建</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><ol>
-<li>node &amp;&amp; git<blockquote>
-<p>brew install node<br>npm : brew install npm<br>git : brew install git</p>
-</blockquote>
-</li>
-<li>验证:<blockquote>
-<p>node –version<br>npm –version<br>git –version</p>
-</blockquote>
-</li>
-<li>安装Hexo<blockquote>
-<p>npm install -g hexo-cli </p>
-</blockquote>
-</li>
-<li>初始化Hexo<blockquote>
-<p>hexo init &lt;folder&gt;<br>$ cd &lt;folder&gt;<br>$ npm install</p>
-</blockquote>
-</li>
+        <p>hive中一般取topN时，row_number(),rank(),dense_ran()这三个函数就派上用场了，</p>
+<ol>
+<li>rank()函数</li>
 </ol>
-<p>新建完成后，在路径下，会产生这些文件和文件夹：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注：</p>
-<ul>
-<li>hexo相关命令均在站点目录下，用Git Bash运行。</li>
-<li>站点配置文件：站点目录下的_config.yml。路径为&lt;folder&gt;_config.yml</li>
-<li>主题配置文件：站点目录下的themes文件夹下的，主题文件夹下的_config.yml。路径为<folder>\themes&lt;主题文件夹&gt;_config.yml</folder></li>
-</ul>
-</blockquote>
-<ol start="5">
-<li>启动服务器。在路径下，命令行（即Git Bash）输入以下命令，运行即可：<blockquote>
-<p>hexo server</p>
-</blockquote>
-</li>
-<li>浏览器访问网址： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></li>
+<p>此排序方法进行排序时，相同的排序是一样的，而且下一个不同值是跳着排序的。</p>
+<ol start="2">
+<li>row_number()函数</li>
 </ol>
-<p>至此，您的Hexo博客已经搭建在本地。</p>
-<h2 id="部署-GithubPages"><a href="#部署-GithubPages" class="headerlink" title="部署 GithubPages"></a>部署 GithubPages</h2><h3 id="1-创建Github账号"><a href="#1-创建Github账号" class="headerlink" title="1.创建Github账号"></a>1.创建Github账号</h3><h3 id="2-创建仓库，-仓库名为：-lt-Github账号名称-gt-github-io"><a href="#2-创建仓库，-仓库名为：-lt-Github账号名称-gt-github-io" class="headerlink" title="2.创建仓库， 仓库名为：&lt;Github账号名称&gt;.github.io"></a>2.创建仓库， 仓库名为：&lt;Github账号名称&gt;.github.io</h3><h3 id="3-将本地Hexo博客推送到GithubPages"><a href="#3-将本地Hexo博客推送到GithubPages" class="headerlink" title="3.将本地Hexo博客推送到GithubPages"></a>3.将本地Hexo博客推送到GithubPages</h3><h4 id="3-1-安装hexo-deployer-git插件。在命令行（即Git-Bash）运行以下命令即可："><a href="#3-1-安装hexo-deployer-git插件。在命令行（即Git-Bash）运行以下命令即可：" class="headerlink" title="3.1 安装hexo-deployer-git插件。在命令行（即Git Bash）运行以下命令即可："></a>3.1 安装hexo-deployer-git插件。在命令行（即Git Bash）运行以下命令即可：</h4><blockquote>
-<p>npm install hexo-deployer-git –save</p>
-</blockquote>
-<h4 id="3-2-添加SSH-key。"><a href="#3-2-添加SSH-key。" class="headerlink" title="3.2. 添加SSH key。"></a>3.2. 添加SSH key。</h4><p>创建一个 SSH key 。在命令行（即Git Bash）输入以下命令， 回车三下即可：</p>
-<blockquote>
-<p>ssh-keygen -t rsa -C “邮箱地址”</p>
-</blockquote>
-<p>添加到 github。 复制密钥文件内容（路径形如～～.ssh\id_rsa.pub），粘贴到<a href="https://github.com/settings/keys即可。" target="_blank" rel="noopener">https://github.com/settings/keys即可。</a></p>
-<p>测试是否添加成功。在命令行（即Git Bash）依次输入以下命令，返回“You’ve successfully authenticated”即成功：</p>
-<blockquote>
-<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
-</blockquote>
-<h4 id="3-3-修改-config-yml（在站点目录下）。文件末尾修改为："><a href="#3-3-修改-config-yml（在站点目录下）。文件末尾修改为：" class="headerlink" title="3.3. 修改_config.yml（在站点目录下）。文件末尾修改为："></a>3.3. 修改_config.yml（在站点目录下）。文件末尾修改为：</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:&lt;Github账号名称&gt;/&lt;Github账号名称&gt;.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>此方法不管排名是否有相同的，都按照顺序1，2，3…..n </p>
+<ol start="3">
+<li>dense_rank()函数</li>
+</ol>
+<p>此方法对于排名相同的名次一样，且后面名次不跳跃</p>
+<p>通过代码运行结果一看就明白了。</p>
+<p>示例数据:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>姓名</th>
+<th>销量（K）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Tom</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tom</td>
+<td>12</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jack</td>
+<td>13</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jack</td>
+<td>12</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tom</td>
+<td>14</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tom</td>
+<td>15</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tom</td>
+<td>13</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Jack</td>
+<td>11</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tom</td>
+<td>16</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Jack</td>
+<td>17</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Tom</td>
+<td>14</td>
+</tr>
+</tbody></table>
+<p>sql语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">	<span class="keyword">id</span>,</span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line">	sal,</span><br><span class="line">	<span class="keyword">rank</span>()<span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span> ) <span class="keyword">rank</span>,</span><br><span class="line">	<span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span> ) desc_rank,</span><br><span class="line">	row_number()<span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) row_number</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">	table_rank_data</span><br></pre></td></tr></table></figure>
 
-<p>注意：上面仓库地址写ssh地址，不写http地址。每个冒号后面都是有一个空格的，这是node的语法。</p>
-<h4 id="3-4-推送到GithubPages。在命令行（即Git-Bash）依次输入以下命令，-返回INFO-Deploy-done-git即成功推送："><a href="#3-4-推送到GithubPages。在命令行（即Git-Bash）依次输入以下命令，-返回INFO-Deploy-done-git即成功推送：" class="headerlink" title="3.4. 推送到GithubPages。在命令行（即Git Bash）依次输入以下命令， 返回INFO Deploy done: git即成功推送："></a>3.4. 推送到GithubPages。在命令行（即Git Bash）依次输入以下命令， 返回INFO Deploy done: git即成功推送：</h4><blockquote>
-<p>hexo g -d</p>
-</blockquote>
-<h4 id="3-5-等待1分钟左右，浏览器访问网址"><a href="#3-5-等待1分钟左右，浏览器访问网址" class="headerlink" title="3.5 等待1分钟左右，浏览器访问网址"></a>3.5 等待1分钟左右，浏览器访问网址</h4><p>https://&lt;Github账号名称&gt;.github.io</p>
-<p>至此，您的Hexo博客已经搭建在GithubPages, 域名为https://&lt;Github账号名称&gt;.github.io。</p>
-<h1 id="Blog美化"><a href="#Blog美化" class="headerlink" title="Blog美化"></a>Blog美化</h1><p><a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">http://theme-next.iissnan.com/getting-started.html</a></p>
-<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/69684798" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/69684798</a><br><a href="https://www.simon96.online/2018/10/12/hexo-tutorial/" target="_blank" rel="noopener">https://www.simon96.online/2018/10/12/hexo-tutorial/</a></p>
-<p>Themes：<br><a href="https://github.com/Doublemine/hexo-theme-next" target="_blank" rel="noopener">https://github.com/Doublemine/hexo-theme-next</a></p>
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>sal</th>
+<th>rank</th>
+<th></th>
+<th>desc_rank</th>
+<th>row_number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>Jack</td>
+<td>17</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jack</td>
+<td>13</td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jack</td>
+<td>12</td>
+<td>3</td>
+<td></td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Jack</td>
+<td>11</td>
+<td>4</td>
+<td></td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tom</td>
+<td>16</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tom</td>
+<td>15</td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Tom</td>
+<td>14</td>
+<td><u><strong>3</strong></u></td>
+<td></td>
+<td><u><strong>3</strong></u></td>
+<td><u><strong>3</strong></u></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tom</td>
+<td>14</td>
+<td><u><strong>3</strong></u></td>
+<td></td>
+<td><strong>3</strong></td>
+<td><u><strong>4</strong></u></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tom</td>
+<td>13</td>
+<td><u><strong>5</strong></u></td>
+<td></td>
+<td><u><strong>4</strong></u></td>
+<td><u><strong>5</strong></u></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tom</td>
+<td>12</td>
+<td>6</td>
+<td></td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Tom</td>
+<td>10</td>
+<td>7</td>
+<td></td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p>题目：正好听到一个需求，求sal前50%的人</p>
+<p>用这个写了一下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">select</span></span><br><span class="line">			<span class="keyword">id</span>,</span><br><span class="line">			<span class="keyword">name</span>,</span><br><span class="line">			sal,</span><br><span class="line">			<span class="keyword">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) rp,</span><br><span class="line">			<span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) drp,</span><br><span class="line">			row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) rmp,</span><br><span class="line">			<span class="keyword">count</span>( *) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span>) * <span class="number">0.5</span> <span class="keyword">as</span> <span class="keyword">count</span></span><br><span class="line">		<span class="keyword">from</span></span><br><span class="line">   			table_rank_data</span><br><span class="line">	)</span><br><span class="line">	t</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">	t.rp &lt; t.count;</span><br></pre></td></tr></table></figure>
+
+<p>感觉虽然可以实现，但是有点复杂，有没有更好的方法实现呢？</p>
+<p>NTILE</p>
+<p>NTILE(n)，用于将分组数据按照顺序切分成n片，返回当前切片值</p>
+<p>NTILE不支持ROWS BETWEEN，比如 NTILE(2) OVER(PARTITION BY cookieid ORDER BY createtime ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)</p>
+<p>如果切片不均匀，默认增加第一个切片的分布</p>
+<p>上面那个例子 正好可以用到这个</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">select</span></span><br><span class="line">			<span class="keyword">id</span>,</span><br><span class="line">			<span class="keyword">name</span>,</span><br><span class="line">			sal,</span><br><span class="line">			NTILE(<span class="number">2</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) rn</span><br><span class="line">		<span class="keyword">from</span></span><br><span class="line">			table_rank_data</span><br><span class="line">	)</span><br><span class="line">	t</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">	t.rn = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -537,7 +684,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/07/07/Start/" title="Github">http://yoursite.com/2019/07/07/Start/</a>
+    <a href="http://yoursite.com/2019/07/07/Hive/rank/" title="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">http://yoursite.com/2019/07/07/Hive/rank/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -552,7 +699,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Testing/" rel="tag"># Testing</a>
+            <a href="/tags/sql/" rel="tag"># sql</a>
           
         </div>
       
@@ -565,8 +712,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/07/Hive/rank/" rel="next" title="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">
-                <i class="fa fa-chevron-left"></i> Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法
+              <a href="/2019/07/07/Hive/over/" rel="next" title="Hive常用函数大全（二）（窗口函数、分析函数、增强group）">
+                <i class="fa fa-chevron-left"></i> Hive常用函数大全（二）（窗口函数、分析函数、增强group）
               </a>
             
           </div>
@@ -574,6 +721,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/07/Start/" rel="prev" title="Github">
+                Github <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -627,17 +778,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -729,22 +871,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Blog搭建"><span class="nav-number">1.</span> <span class="nav-text">Blog搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">1.1.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署-GithubPages"><span class="nav-number">1.2.</span> <span class="nav-text">部署 GithubPages</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-创建Github账号"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.创建Github账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建仓库，-仓库名为：-lt-Github账号名称-gt-github-io"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.创建仓库， 仓库名为：&lt;Github账号名称&gt;.github.io</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将本地Hexo博客推送到GithubPages"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.将本地Hexo博客推送到GithubPages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-安装hexo-deployer-git插件。在命令行（即Git-Bash）运行以下命令即可："><span class="nav-number">1.2.3.1.</span> <span class="nav-text">3.1 安装hexo-deployer-git插件。在命令行（即Git Bash）运行以下命令即可：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-添加SSH-key。"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">3.2. 添加SSH key。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-修改-config-yml（在站点目录下）。文件末尾修改为："><span class="nav-number">1.2.3.3.</span> <span class="nav-text">3.3. 修改_config.yml（在站点目录下）。文件末尾修改为：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-推送到GithubPages。在命令行（即Git-Bash）依次输入以下命令，-返回INFO-Deploy-done-git即成功推送："><span class="nav-number">1.2.3.4.</span> <span class="nav-text">3.4. 推送到GithubPages。在命令行（即Git Bash）依次输入以下命令， 返回INFO Deploy done: git即成功推送：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-等待1分钟左右，浏览器访问网址"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">3.5 等待1分钟左右，浏览器访问网址</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Blog美化"><span class="nav-number">2.</span> <span class="nav-text">Blog美化</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sql,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="窗口函数与分析函数应用场景：（1）用于分区排序（2）动态Group By（3）Top N（4）累计计算（5）层次查询 窗口函数   函数 功能    FIRST_VALUE 取分组内排序后，截止到当前行，第一个值   LAST_VALUE 取分组内排序后，截止到当前行，最后一个值   LEAD(col,n,DEFAULT) 用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive常用函数大全（二）（窗口函数、分析函数、增强group）">
+<meta property="og:url" content="http://yoursite.com/2019/07/07/Hive/over/index.html">
+<meta property="og:site_name" content="WHJason">
+<meta property="og:description" content="窗口函数与分析函数应用场景：（1）用于分区排序（2）动态Group By（3）Top N（4）累计计算（5）层次查询 窗口函数   函数 功能    FIRST_VALUE 取分组内排序后，截止到当前行，第一个值   LAST_VALUE 取分组内排序后，截止到当前行，最后一个值   LEAD(col,n,DEFAULT) 用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-07T14:52:05.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hive常用函数大全（二）（窗口函数、分析函数、增强group）">
+<meta name="twitter:description" content="窗口函数与分析函数应用场景：（1）用于分区排序（2）动态Group By（3）Top N（4）累计计算（5）层次查询 窗口函数   函数 功能    FIRST_VALUE 取分组内排序后，截止到当前行，第一个值   LAST_VALUE 取分组内排序后，截止到当前行，最后一个值   LEAD(col,n,DEFAULT) 用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/07/Hive/over/">
+
+
+
+
+
+  <title>Hive常用函数大全（二）（窗口函数、分析函数、增强group） | WHJason</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WHJason</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/07/Hive/over/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WHJason">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WHJason">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Hive常用函数大全（二）（窗口函数、分析函数、增强group）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">
+                2019-07-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-07T22:52:05+08:00">
+                2019-07-07
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hive/" itemprop="url" rel="index">
+                    <span itemprop="name">Hive</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/07/07/Hive/over/" class="leancloud_visitors" data-flag-title="Hive常用函数大全（二）（窗口函数、分析函数、增强group）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="窗口函数与分析函数"><a href="#窗口函数与分析函数" class="headerlink" title="窗口函数与分析函数"></a><strong>窗口函数与分析函数</strong></h3><p><strong>应用场景：</strong><br>（1）用于分区排序<br>（2）动态Group By<br>（3）Top N<br>（4）累计计算<br>（5）层次查询</p>
+<h4 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a><strong>窗口函数</strong></h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FIRST_VALUE</td>
+<td>取分组内排序后，截止到当前行，第一个值</td>
+</tr>
+<tr>
+<td>LAST_VALUE</td>
+<td>取分组内排序后，截止到当前行，最后一个值</td>
+</tr>
+<tr>
+<td>LEAD(col,n,DEFAULT)</td>
+<td>用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选，默认为1），第三个参数为默认值（当往下第n行为NULL时候，取默认值，如不指定，则为NULL）</td>
+</tr>
+<tr>
+<td>LAG(col,n,DEFAULT)</td>
+<td>与lead相反，用于统计窗口内往上第n行值。第一个参数为列名，第二个参数为往上第n行（可选，默认为1），第三个参数为默认值（当往上第n行为NULL时候，取默认值，如不指定，则为NULL）</td>
+</tr>
+</tbody></table>
+<h4 id="OVER从句"><a href="#OVER从句" class="headerlink" title="OVER从句"></a>OVER从句</h4><p>1、使用标准的聚合函数<code>COUNT、SUM、MIN、MAX、AVG</code><br>2、使用<code>PARTITION BY</code>语句，使用一个或者多个原始数据类型的列<br>3、使用<code>PARTITION BY</code>与<code>ORDER BY</code>语句，使用一个或者多个数据类型的分区或者排序列<br>4、使用窗口规范，窗口规范支持以下格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN (UNBOUNDED | [num]) PRECEDING AND ([num] PRECEDING | CURRENT ROW | (UNBOUNDED | [num]) FOLLOWING)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN CURRENT ROW AND (CURRENT ROW | (UNBOUNDED | [num]) FOLLOWING)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN [num] FOLLOWING AND (UNBOUNDED | [num]) FOLLOWING</span><br></pre></td></tr></table></figure>
+
+<p>当<code>ORDER BY</code>后面缺少窗口从句条件，窗口规范默认是 <code>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code>.</p>
+<p>当<code>ORDER BY</code>和窗口从句都缺失, 窗口规范默认是 <code>ROW BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</code>.</p>
+<p><code>OVER</code>从句支持以下函数， 但是并不支持和窗口一起使用它们。<br>Ranking函数: <code>Rank, NTile, DenseRank, CumeDist, PercentRank</code>.<br><code>Lead</code> 和 <code>Lag</code> 函数.</p>
+<h4 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a><strong>分析函数</strong></h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ROW_NUMBER()</td>
+<td>从1开始，按照顺序，生成分组内记录的序列,比如，按照pv降序排列，生成分组内每天的pv名次,ROW_NUMBER()的应用场景非常多，再比如，获取分组内排序第一的记录;获取一个session中的第一条refer等。</td>
+</tr>
+<tr>
+<td>RANK()</td>
+<td>生成数据项在分组中的排名，排名相等会在名次中留下空位</td>
+</tr>
+<tr>
+<td>DENSE_RANK()</td>
+<td>生成数据项在分组中的排名，排名相等会在名次中不会留下空位</td>
+</tr>
+<tr>
+<td>CUME_DIST</td>
+<td>小于等于当前值的行数/分组内总行数。比如，统计小于等于当前薪水的人数，所占总人数的比例</td>
+</tr>
+<tr>
+<td>PERCENT_RANK</td>
+<td>分组内当前行的RANK值-1/分组内总行数-1</td>
+</tr>
+<tr>
+<td>NTILE(n)</td>
+<td>用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布。NTILE不支持ROWS BETWEEN，比如 NTILE(2) OVER(PARTITION BY cookieid ORDER BY createtime ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)</td>
+</tr>
+</tbody></table>
+<p><strong>Hive2.1.0及以后支持Distinct</strong></p>
+<p>在聚合函数（SUM, COUNT and AVG）中，支持distinct，但是在ORDER BY 或者 窗口限制不支持。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT a) OVER (PARTITION BY c)1</span><br></pre></td></tr></table></figure>
+
+<p><strong>Hive 2.2.0中在使用ORDER BY和窗口限制时支持distinct</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT a) OVER (PARTITION BY c ORDER BY d ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)1</span><br></pre></td></tr></table></figure>
+
+<h4 id="Hive2-1-0及以后支持在OVER从句中支持聚合函数"><a href="#Hive2-1-0及以后支持在OVER从句中支持聚合函数" class="headerlink" title="Hive2.1.0及以后支持在OVER从句中支持聚合函数"></a><strong>Hive2.1.0及以后支持在OVER从句中支持聚合函数</strong></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">rank</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">sum</span>(b))</span><br><span class="line"><span class="keyword">FROM</span> T</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> a;123</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试数据集：</strong> </p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>device_id</th>
+<th>user_type</th>
+<th>price</th>
+<th></th>
+<th>sales</th>
+<th>log_time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>d_001</td>
+<td>new</td>
+<td>67.1</td>
+<td></td>
+<td>2</td>
+<td>2019-07-01</td>
+</tr>
+<tr>
+<td>lisi</td>
+<td>d_001</td>
+<td>old</td>
+<td>43.32</td>
+<td></td>
+<td>1</td>
+<td>2019-07-02</td>
+</tr>
+<tr>
+<td>wanger</td>
+<td>d_001</td>
+<td>new</td>
+<td>88.88</td>
+<td></td>
+<td>3</td>
+<td>2019-07-04</td>
+</tr>
+<tr>
+<td>liiu</td>
+<td>d_001</td>
+<td>new</td>
+<td>66.0</td>
+<td></td>
+<td>1</td>
+<td>2019-07-05</td>
+</tr>
+<tr>
+<td>qibaqiu</td>
+<td>d_001</td>
+<td>new</td>
+<td>54.32</td>
+<td></td>
+<td>1</td>
+<td>2019-07-06</td>
+</tr>
+<tr>
+<td>wangshi</td>
+<td>d_002</td>
+<td>old</td>
+<td>77.77</td>
+<td></td>
+<td>2</td>
+<td>2019-07-02</td>
+</tr>
+<tr>
+<td>liwei</td>
+<td>d_002</td>
+<td>old</td>
+<td>88.44</td>
+<td></td>
+<td>3</td>
+<td>2019-07-03</td>
+</tr>
+<tr>
+<td>wutong</td>
+<td>d_002</td>
+<td>new</td>
+<td>56.55</td>
+<td></td>
+<td>6</td>
+<td>2019-07-04</td>
+</tr>
+<tr>
+<td>lilisi</td>
+<td>d_002</td>
+<td>new</td>
+<td>88.88</td>
+<td></td>
+<td>5</td>
+<td>2019-07-06</td>
+</tr>
+<tr>
+<td>qishili</td>
+<td>d_002</td>
+<td>new</td>
+<td>66.66</td>
+<td></td>
+<td>5</td>
+<td>2019-07-07</td>
+</tr>
+</tbody></table>
+<h2 id="COUNT、SUM、MIN、MAX、AVG"><a href="#COUNT、SUM、MIN、MAX、AVG" class="headerlink" title="COUNT、SUM、MIN、MAX、AVG"></a>COUNT、SUM、MIN、MAX、AVG</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,</span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="comment">--默认为从起点到当前行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span>) <span class="keyword">AS</span> sales_1,</span><br><span class="line">    <span class="comment">--从起点到当前行，结果与sales_1不同。</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">AS</span> sales_2,</span><br><span class="line">    <span class="comment">--当前行+往前3行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">AS</span> sales_3,</span><br><span class="line">    <span class="comment">--当前行+往前3行+往后1行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="number">1</span> <span class="keyword">FOLLOWING</span>) <span class="keyword">AS</span> sales_4,</span><br><span class="line">    <span class="comment">--当前行+往后所有行  </span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span> <span class="keyword">AND</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">FOLLOWING</span>) <span class="keyword">AS</span> sales_5,</span><br><span class="line">    <span class="comment">--分组内所有行</span></span><br><span class="line">    <span class="keyword">SUM</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type) <span class="keyword">AS</span> sales_6                          </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    user_id</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>sales_1</th>
+<th>sales_2</th>
+<th>sales_3</th>
+<th>sales_4</th>
+<th>sales_5</th>
+<th>sales_6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>liiu</td>
+<td>new</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>4</td>
+<td>22</td>
+<td>23</td>
+</tr>
+<tr>
+<td>qibaqiu</td>
+<td>new</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>23</td>
+<td>23</td>
+</tr>
+<tr>
+<td>zhangsa</td>
+<td>new</td>
+<td>2</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>7</td>
+<td>21</td>
+<td>23</td>
+</tr>
+<tr>
+<td>wanger</td>
+<td>new</td>
+<td>3</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>12</td>
+<td>19</td>
+<td>23</td>
+</tr>
+<tr>
+<td>lilisi</td>
+<td>new</td>
+<td>5</td>
+<td>17</td>
+<td>17</td>
+<td>15</td>
+<td>21</td>
+<td>11</td>
+<td>23</td>
+</tr>
+<tr>
+<td>qishili</td>
+<td>new</td>
+<td>5</td>
+<td>17</td>
+<td>12</td>
+<td>11</td>
+<td>16</td>
+<td>16</td>
+<td>23</td>
+</tr>
+<tr>
+<td>wutong</td>
+<td>new</td>
+<td>6</td>
+<td>23</td>
+<td>23</td>
+<td>19</td>
+<td>19</td>
+<td>6</td>
+<td>23</td>
+</tr>
+<tr>
+<td>lisi</td>
+<td>old</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>wangshi</td>
+<td>old</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>6</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>liwei</td>
+<td>old</td>
+<td>3</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>6</td>
+<td>3</td>
+<td>6</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意:<br>结果和ORDER BY相关,默认为升序<br>如果不指定ROWS BETWEEN,默认为从起点到当前行;<br>如果不指定ORDER BY，则将分组内所有值累加;</p>
+<p>关键是理解ROWS BETWEEN含义,也叫做WINDOW子句：<br>PRECEDING：往前<br>FOLLOWING：往后<br>CURRENT ROW：当前行<br>UNBOUNDED：无界限（起点或终点）<br>UNBOUNDED PRECEDING：表示从前面的起点<br>UNBOUNDED FOLLOWING：表示到后面的终点<br>其他COUNT、AVG，MIN，MAX，和SUM用法一样。</p>
+</blockquote>
+<blockquote>
+<p>理解：执行逻辑为先partiton 内order by 然后sum/max/min</p>
+</blockquote>
+<h2 id="first-value与last-value"><a href="#first-value与last-value" class="headerlink" title="first_value与last_value"></a>first_value与last_value</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,</span><br><span class="line">    user_type,</span><br><span class="line">    ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> row_num,  </span><br><span class="line">    <span class="keyword">first_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> max_sales_user,</span><br><span class="line">    <span class="keyword">first_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">asc</span>) <span class="keyword">as</span> min_sales_user,</span><br><span class="line">    <span class="keyword">last_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> curr_last_min_user,</span><br><span class="line">    <span class="keyword">last_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">asc</span>) <span class="keyword">as</span> curr_last_max_user</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<p>result：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>row_num</th>
+<th>max_sales_user</th>
+<th>min_sales_user</th>
+<th>curr_last_min_user</th>
+<th>curr_last_max_user</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wutong</td>
+<td>new</td>
+<td>7</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>wutong</td>
+<td>wutong</td>
+</tr>
+<tr>
+<td>lilisi</td>
+<td>new</td>
+<td>6</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>qishili</td>
+<td>lilisi</td>
+</tr>
+<tr>
+<td>qishili</td>
+<td>new</td>
+<td>5</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>qishili</td>
+<td>lilisi</td>
+</tr>
+<tr>
+<td>wanger</td>
+<td>new</td>
+<td>4</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>wanger</td>
+<td>wanger</td>
+</tr>
+<tr>
+<td>zhangsa</td>
+<td>new</td>
+<td>3</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>zhangsa</td>
+<td>zhangsa</td>
+</tr>
+<tr>
+<td>liiu</td>
+<td>new</td>
+<td>2</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>qibaqiu</td>
+<td>liiu</td>
+</tr>
+<tr>
+<td>qibaqiu</td>
+<td>new</td>
+<td>1</td>
+<td>wutong</td>
+<td>qibaqiu</td>
+<td>qibaqiu</td>
+<td>liiu</td>
+</tr>
+<tr>
+<td>liwei</td>
+<td>old</td>
+<td>3</td>
+<td>liwei</td>
+<td>lisi</td>
+<td>liwei</td>
+<td>liwei</td>
+</tr>
+<tr>
+<td>wangshi</td>
+<td>old</td>
+<td>2</td>
+<td>liwei</td>
+<td>lisi</td>
+<td>wangshi</td>
+<td>wangshi</td>
+</tr>
+<tr>
+<td>lisi</td>
+<td>old</td>
+<td>1</td>
+<td>liwei</td>
+<td>lisi</td>
+<td>lisi</td>
+<td>lisi</td>
+</tr>
+</tbody></table>
+<h2 id="lead与lag"><a href="#lead与lag" class="headerlink" title="lead与lag"></a>lead与lag</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,device_id,</span><br><span class="line">    <span class="keyword">lead</span>(device_id) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> default_after_one_line,</span><br><span class="line">    lag(device_id) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> default_before_one_line,</span><br><span class="line">    <span class="keyword">lead</span>(device_id,<span class="number">2</span>) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> after_two_line,</span><br><span class="line">    lag(device_id,<span class="number">2</span>,<span class="string">'abc'</span>) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> before_two_line</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<h2 id="RANK、ROW-NUMBER、DENSE-RANK"><a href="#RANK、ROW-NUMBER、DENSE-RANK" class="headerlink" title="RANK、ROW_NUMBER、DENSE_RANK"></a>RANK、ROW_NUMBER、DENSE_RANK</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,user_type,sales,</span><br><span class="line">    <span class="keyword">RANK</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> r,</span><br><span class="line">    ROW_NUMBER() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> rn,</span><br><span class="line">    <span class="keyword">DENSE_RANK</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> dr</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>r</th>
+<th>rn</th>
+<th>dr</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wutong</td>
+<td>new</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>qishili</td>
+<td>new</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>lilisi</td>
+<td>new</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>wanger</td>
+<td>new</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td>zhangsa</td>
+<td>new</td>
+<td>2</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>qibaqiu</td>
+<td>new</td>
+<td>1</td>
+<td>6</td>
+<td>6</td>
+<td>5</td>
+</tr>
+<tr>
+<td>liiu</td>
+<td>new</td>
+<td>1</td>
+<td>6</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr>
+<td>liwei</td>
+<td>old</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>wangshi</td>
+<td>old</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>lisi</td>
+<td>old</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2 id="NTILE"><a href="#NTILE" class="headerlink" title="NTILE"></a>NTILE</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_type,sales,</span><br><span class="line">    <span class="comment">--分组内将数据分成2片</span></span><br><span class="line">    NTILE(<span class="number">2</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt2,</span><br><span class="line">    <span class="comment">--分组内将数据分成3片    </span></span><br><span class="line">    NTILE(<span class="number">3</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt3,</span><br><span class="line">    <span class="comment">--分组内将数据分成4片    </span></span><br><span class="line">    NTILE(<span class="number">4</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt4,</span><br><span class="line">    <span class="comment">--将所有数据分成4片</span></span><br><span class="line">    NTILE(<span class="number">4</span>) <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> all_nt4</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,</span><br><span class="line">    sales</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>sales</th>
+<th>nt2</th>
+<th>nt3</th>
+<th>nt4</th>
+<th>all_nt4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>5</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>new</td>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>6</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>old</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>old</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</tbody></table>
+<h2 id="求取sale前20-的用户ID"><a href="#求取sale前20-的用户ID" class="headerlink" title="求取sale前20%的用户ID"></a>求取sale前20%的用户ID</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        user_id,</span><br><span class="line">        NTILE(<span class="number">5</span>) <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">desc</span>) <span class="keyword">AS</span> nt</span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">        order_detail</span><br><span class="line">)A</span><br><span class="line"><span class="keyword">where</span> nt=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CUME-DIST、PERCENT-RANK"><a href="#CUME-DIST、PERCENT-RANK" class="headerlink" title="CUME_DIST、PERCENT_RANK"></a>CUME_DIST、PERCENT_RANK</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">user_id,user_type,sales,</span><br><span class="line"><span class="comment">--没有partition,所有数据均为1组</span></span><br><span class="line"><span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> cd1,</span><br><span class="line"><span class="comment">--按照user_type进行分组</span></span><br><span class="line"><span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> cd2 </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>cd1</th>
+<th>cd2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>liiu</td>
+<td>new</td>
+<td>1</td>
+<td>0.3</td>
+<td>0.285714286</td>
+</tr>
+<tr>
+<td>qibaqiu</td>
+<td>new</td>
+<td>1</td>
+<td>0.3</td>
+<td>0.285714286</td>
+</tr>
+<tr>
+<td>zhangsa</td>
+<td>new</td>
+<td>2</td>
+<td>0.5</td>
+<td>0.428571429</td>
+</tr>
+<tr>
+<td>wanger</td>
+<td>new</td>
+<td>3</td>
+<td>0.7</td>
+<td>0.571428571</td>
+</tr>
+<tr>
+<td>lilisi</td>
+<td>new</td>
+<td>5</td>
+<td>0.9</td>
+<td>0.857142857</td>
+</tr>
+<tr>
+<td>qishili</td>
+<td>new</td>
+<td>5</td>
+<td>0.9</td>
+<td>0.857142857</td>
+</tr>
+<tr>
+<td>wutong</td>
+<td>new</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>lisi</td>
+<td>old</td>
+<td>1</td>
+<td>0.3</td>
+<td>0.333333333</td>
+</tr>
+<tr>
+<td>wangshi</td>
+<td>old</td>
+<td>2</td>
+<td>0.5</td>
+<td>0.666666667</td>
+</tr>
+<tr>
+<td>liwei</td>
+<td>old</td>
+<td>3</td>
+<td>0.7</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">user_type,sales</span><br><span class="line"><span class="comment">--分组内总行数      </span></span><br><span class="line"><span class="keyword">SUM</span>(<span class="number">1</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type) <span class="keyword">AS</span> s, </span><br><span class="line"><span class="comment">--RANK值  </span></span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> r,    </span><br><span class="line"><span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> pr,</span><br><span class="line"><span class="comment">--分组内     </span></span><br><span class="line"><span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> prg </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>s</th>
+<th>r</th>
+<th>pr</th>
+<th>prg</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>0.333333333</td>
+<td>0.33333333</td>
+</tr>
+<tr>
+<td>7</td>
+<td>6</td>
+<td>0.555555556</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>0.777777778</td>
+<td>0.66666667</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8</td>
+<td>0.777777778</td>
+<td>0.66666667</td>
+</tr>
+<tr>
+<td>7</td>
+<td>10</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>0.333333333</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>0.555555556</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<h3 id="增强的聚合-Cube和Grouping-和Rollup"><a href="#增强的聚合-Cube和Grouping-和Rollup" class="headerlink" title="增强的聚合 Cube和Grouping 和Rollup"></a>增强的聚合 Cube和Grouping 和Rollup</h3><p>这几个分析函数通常用于OLAP中，不能累加，而且需要根据不同维度上钻和下钻的指标统计，比如，分小时、天、月的UV数。</p>
+<p><strong>GROUPING SETS</strong><br>在一个GROUP BY查询中，根据不同的维度组合进行聚合，等价于将不同维度的GROUP BY结果集进行UNION ALL,<br>其中的GROUPING__ID，表示结果属于哪一个分组集合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">GROUPING</span> <span class="keyword">SETS</span>(user_type,sales) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br><span class="line"></span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| user_type  | sales  | pv  | grouping__id  |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| old        | NULL   | 3   | 1             |</span><br><span class="line">| new        | NULL   | 7   | 1             |</span><br><span class="line">| NULL       | 6      | 1   | 2             |</span><br><span class="line">| NULL       | 5      | 2   | 2             |</span><br><span class="line">| NULL       | 3      | 2   | 2             |</span><br><span class="line">| NULL       | 2      | 2   | 2             |</span><br><span class="line">| NULL       | 1      | 3   | 2             |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">GROUPING</span> <span class="keyword">SETS</span>(user_type,sales,(user_type,sales)) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br><span class="line"></span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| user_type  | sales  | pv  | grouping__id  |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| old        | NULL   | 3   | 1             |</span><br><span class="line">| new        | NULL   | 7   | 1             |</span><br><span class="line">| NULL       | 1      | 3   | 2             |</span><br><span class="line">| NULL       | 6      | 1   | 2             |</span><br><span class="line">| NULL       | 5      | 2   | 2             |</span><br><span class="line">| NULL       | 3      | 2   | 2             |</span><br><span class="line">| NULL       | 2      | 2   | 2             |</span><br><span class="line">| old        | 3      | 1   | 3             |</span><br><span class="line">| old        | 2      | 1   | 3             |</span><br><span class="line">| old        | 1      | 1   | 3             |</span><br><span class="line">| new        | 6      | 1   | 3             |</span><br><span class="line">| new        | 5      | 2   | 3             |</span><br><span class="line">| new        | 3      | 1   | 3             |</span><br><span class="line">| new        | 1      | 2   | 3             |</span><br><span class="line">| new        | 2      | 1   | 3             |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>CUBE</strong><br>根据GROUP BY的维度的所有组合进行聚合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">CUBE</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br><span class="line"></span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| user_type  | sales  | pv  | grouping__id  |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| NULL       | NULL   | 10  | 0             |</span><br><span class="line">| new        | NULL   | 7   | 1             |</span><br><span class="line">| old        | NULL   | 3   | 1             |</span><br><span class="line">| NULL       | 6      | 1   | 2             |</span><br><span class="line">| NULL       | 5      | 2   | 2             |</span><br><span class="line">| NULL       | 3      | 2   | 2             |</span><br><span class="line">| NULL       | 2      | 2   | 2             |</span><br><span class="line">| NULL       | 1      | 3   | 2             |</span><br><span class="line">| old        | 3      | 1   | 3             |</span><br><span class="line">| old        | 2      | 1   | 3             |</span><br><span class="line">| old        | 1      | 1   | 3             |</span><br><span class="line">| new        | 6      | 1   | 3             |</span><br><span class="line">| new        | 5      | 2   | 3             |</span><br><span class="line">| new        | 3      | 1   | 3             |</span><br><span class="line">| new        | 2      | 1   | 3             |</span><br><span class="line">| new        | 1      | 2   | 3             |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>ROLLUP</strong><br>是CUBE的子集，以最左侧的维度为主，从该维度进行层级聚合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">ROLLUP</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br><span class="line"></span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| user_type  | sales  | pv  | grouping__id  |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br><span class="line">| NULL       | NULL   | 10  | 0             |</span><br><span class="line">| old        | NULL   | 3   | 1             |</span><br><span class="line">| new        | NULL   | 7   | 1             |</span><br><span class="line">| old        | 3      | 1   | 3             |</span><br><span class="line">| old        | 2      | 1   | 3             |</span><br><span class="line">| old        | 1      | 1   | 3             |</span><br><span class="line">| new        | 6      | 1   | 3             |</span><br><span class="line">| new        | 5      | 2   | 3             |</span><br><span class="line">| new        | 3      | 1   | 3             |</span><br><span class="line">| new        | 2      | 1   | 3             |</span><br><span class="line">| new        | 1      | 2   | 3             |</span><br><span class="line">+<span class="comment">------------+--------+-----+---------------+--+</span></span><br></pre></td></tr></table></figure>
+
+<p>题：</p>
+<p>1.设备总共使用天数和最早、最晚使用的用户和时间</p>
+<p>2.设备连续使用最长的天数</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    WHJason
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/07/07/Hive/over/" title="Hive常用函数大全（二）（窗口函数、分析函数、增强group）">http://yoursite.com/2019/07/07/Hive/over/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/07/Hive/rank/" rel="prev" title="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">
+                Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="WHJason">
+            
+              <p class="site-author-name" itemprop="name">WHJason</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/gofreehj" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gofreehj@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/gofreehj" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口函数与分析函数"><span class="nav-number">1.</span> <span class="nav-text">窗口函数与分析函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#窗口函数"><span class="nav-number">1.1.</span> <span class="nav-text">窗口函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OVER从句"><span class="nav-number">1.2.</span> <span class="nav-text">OVER从句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分析函数"><span class="nav-number">1.3.</span> <span class="nav-text">分析函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hive2-1-0及以后支持在OVER从句中支持聚合函数"><span class="nav-number">1.4.</span> <span class="nav-text">Hive2.1.0及以后支持在OVER从句中支持聚合函数</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#COUNT、SUM、MIN、MAX、AVG"><span class="nav-number"></span> <span class="nav-text">COUNT、SUM、MIN、MAX、AVG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-value与last-value"><span class="nav-number"></span> <span class="nav-text">first_value与last_value</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lead与lag"><span class="nav-number"></span> <span class="nav-text">lead与lag</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RANK、ROW-NUMBER、DENSE-RANK"><span class="nav-number"></span> <span class="nav-text">RANK、ROW_NUMBER、DENSE_RANK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTILE"><span class="nav-number"></span> <span class="nav-text">NTILE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求取sale前20-的用户ID"><span class="nav-number"></span> <span class="nav-text">求取sale前20%的用户ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CUME-DIST、PERCENT-RANK"><span class="nav-number"></span> <span class="nav-text">CUME_DIST、PERCENT_RANK</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增强的聚合-Cube和Grouping-和Rollup"><span class="nav-number">1.</span> <span class="nav-text">增强的聚合 Cube和Grouping 和Rollup</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WHJason</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+
+
+  
+
+
+</body>
+</html>
