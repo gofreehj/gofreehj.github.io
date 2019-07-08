@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,17 +18,11 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -27,8 +30,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -41,119 +42,42 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
 
-  
-  
-  
-  
 
-  
-    
-    
-  
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
 
-  
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-      
-    
 
-    
-  
 
-  
-    
-      
-    
 
-    
-  
-
-  
-    
-    
-    <link href="//fonts.cat.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="WHJason">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="WHJason">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WHJason">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.3',
-    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
-    fancybox: true,
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,12 +89,34 @@
 </script>
 
 
+  
 
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="WHJason">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="WHJason">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WHJason">
+
+
+
+
+
+  
+  
   <link rel="canonical" href="http://yoursite.com/">
 
 
 
-
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>WHJason</title>
   
@@ -182,6 +128,35 @@
 
 
 
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -191,13 +166,13 @@
     
   
 
-  <div class="container sidebar-position-right 
+  <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -207,13 +182,12 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <h1 class="site-subtitle" itemprop="description"></h1>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -221,65 +195,53 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -287,12 +249,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -305,6 +275,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -315,7 +287,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WHJason">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -327,59 +299,54 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/07/Start/" itemprop="url">Github</a></h2>
+                
+                <a href="/2019/07/07/Start/" class="post-title-link" itemprop="url">Github</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">
-                2019-07-07
-              </time>
-            
 
-            
-              <span class="post-meta-divider">|</span>
-            
+              
+                
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-07T13:53:21+08:00">
-                2019-07-07
-              </time>
-            
-          </span>
+              <time title="Created: 2019-07-07 12:33:48 / Modified: 13:53:21" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">2019-07-07</time>
+            </span>
+          
 
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Github/" itemprop="url" rel="index">
-                    <span itemprop="name">Github</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Github/" itemprop="url" rel="index"><span itemprop="name">Github</span></a></span>
 
                 
                 
@@ -389,55 +356,17 @@
 
           
             
+            
           
 
           
           
-             <span id="/2019/07/07/Start/" class="leancloud_visitors" data-flag-title="Github">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
           
 
+          <br>
           
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  596
-                </span>
-              
 
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
           
 
           
@@ -457,34 +386,83 @@
       
         
           
-          Blog搭建准备环境
-node &amp;&amp; git
-brew install nodenpm : brew install npmgit : brew install git
+            <h1 id="Blog搭建"><a href="#Blog搭建" class="headerlink" title="Blog搭建"></a>Blog搭建</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><ol>
+<li>node &amp;&amp; git<blockquote>
+<p>brew install node<br>npm : brew install npm<br>git : brew install git</p>
+</blockquote>
+</li>
+<li>验证:<blockquote>
+<p>node –version<br>npm –version<br>git –version</p>
+</blockquote>
+</li>
+<li>安装Hexo<blockquote>
+<p>npm install -g hexo-cli </p>
+</blockquote>
+</li>
+<li>初始化Hexo<blockquote>
+<p>hexo init &lt;folder&gt;<br>$ cd &lt;folder&gt;<br>$ npm install</p>
+</blockquote>
+</li>
+</ol>
+<p>新建完成后，在路径下，会产生这些文件和文件夹：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>注：</p>
+<ul>
+<li>hexo相关命令均在站点目录下，用Git Bash运行。</li>
+<li>站点配置文件：站点目录下的_config.yml。路径为&lt;folder&gt;_config.yml</li>
+<li>主题配置文件：站点目录下的themes文件夹下的，主题文件夹下的_config.yml。路径为<folder>\themes&lt;主题文件夹&gt;_config.yml</folder></li>
+</ul>
+</blockquote>
+<ol start="5">
+<li>启动服务器。在路径下，命令行（即Git Bash）输入以下命令，运行即可：<blockquote>
+<p>hexo server</p>
+</blockquote>
+</li>
+<li>浏览器访问网址： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></li>
+</ol>
+<p>至此，您的Hexo博客已经搭建在本地。</p>
+<h2 id="部署-GithubPages"><a href="#部署-GithubPages" class="headerlink" title="部署 GithubPages"></a>部署 GithubPages</h2><h3 id="1-创建Github账号"><a href="#1-创建Github账号" class="headerlink" title="1.创建Github账号"></a>1.创建Github账号</h3><h3 id="2-创建仓库，-仓库名为：-lt-Github账号名称-gt-github-io"><a href="#2-创建仓库，-仓库名为：-lt-Github账号名称-gt-github-io" class="headerlink" title="2.创建仓库， 仓库名为：&lt;Github账号名称&gt;.github.io"></a>2.创建仓库， 仓库名为：&lt;Github账号名称&gt;.github.io</h3><h3 id="3-将本地Hexo博客推送到GithubPages"><a href="#3-将本地Hexo博客推送到GithubPages" class="headerlink" title="3.将本地Hexo博客推送到GithubPages"></a>3.将本地Hexo博客推送到GithubPages</h3><h4 id="3-1-安装hexo-deployer-git插件。在命令行（即Git-Bash）运行以下命令即可："><a href="#3-1-安装hexo-deployer-git插件。在命令行（即Git-Bash）运行以下命令即可：" class="headerlink" title="3.1 安装hexo-deployer-git插件。在命令行（即Git Bash）运行以下命令即可："></a>3.1 安装hexo-deployer-git插件。在命令行（即Git Bash）运行以下命令即可：</h4><blockquote>
+<p>npm install hexo-deployer-git –save</p>
+</blockquote>
+<h4 id="3-2-添加SSH-key。"><a href="#3-2-添加SSH-key。" class="headerlink" title="3.2. 添加SSH key。"></a>3.2. 添加SSH key。</h4><p>创建一个 SSH key 。在命令行（即Git Bash）输入以下命令， 回车三下即可：</p>
+<blockquote>
+<p>ssh-keygen -t rsa -C “邮箱地址”</p>
+</blockquote>
+<p>添加到 github。 复制密钥文件内容（路径形如～～.ssh\id_rsa.pub），粘贴到<a href="https://github.com/settings/keys即可。" target="_blank" rel="noopener">https://github.com/settings/keys即可。</a></p>
+<p>测试是否添加成功。在命令行（即Git Bash）依次输入以下命令，返回“You’ve successfully authenticated”即成功：</p>
+<blockquote>
+<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+</blockquote>
+<h4 id="3-3-修改-config-yml（在站点目录下）。文件末尾修改为："><a href="#3-3-修改-config-yml（在站点目录下）。文件末尾修改为：" class="headerlink" title="3.3. 修改_config.yml（在站点目录下）。文件末尾修改为："></a>3.3. 修改_config.yml（在站点目录下）。文件末尾修改为：</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:&lt;Github账号名称&gt;/&lt;Github账号名称&gt;.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 
-验证:
-node –versionnpm –versiongit –version
+<p>注意：上面仓库地址写ssh地址，不写http地址。每个冒号后面都是有一个空格的，这是node的语法。</p>
+<h4 id="3-4-推送到GithubPages。在命令行（即Git-Bash）依次输入以下命令，-返回INFO-Deploy-done-git即成功推送："><a href="#3-4-推送到GithubPages。在命令行（即Git-Bash）依次输入以下命令，-返回INFO-Deploy-done-git即成功推送：" class="headerlink" title="3.4. 推送到GithubPages。在命令行（即Git Bash）依次输入以下命令， 返回INFO Deploy done: git即成功推送："></a>3.4. 推送到GithubPages。在命令行（即Git Bash）依次输入以下命令， 返回INFO Deploy done: git即成功推送：</h4><blockquote>
+<p>hexo g -d</p>
+</blockquote>
+<h4 id="3-5-等待1分钟左右，浏览器访问网址"><a href="#3-5-等待1分钟左右，浏览器访问网址" class="headerlink" title="3.5 等待1分钟左右，浏览器访问网址"></a>3.5 等待1分钟左右，浏览器访问网址</h4><p>https://&lt;Github账号名称&gt;.github.io</p>
+<p>至此，您的Hexo博客已经搭建在GithubPages, 域名为https://&lt;Github账号名称&gt;.github.io。</p>
+<h1 id="Blog美化"><a href="#Blog美化" class="headerlink" title="Blog美化"></a>Blog美化</h1><p><a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">http://theme-next.iissnan.com/getting-started.html</a></p>
+<p>参考：<br><a href="https://zhuanlan.zhihu.com/p/69684798" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/69684798</a><br><a href="https://www.simon96.online/2018/10/12/hexo-tutorial/" target="_blank" rel="noopener">https://www.simon96.online/2018/10/12/hexo-tutorial/</a></p>
+<p>Themes：<br><a href="https://github.com/Doublemine/hexo-theme-next" target="_blank" rel="noopener">https://github.com/Doublemine/hexo-theme-next</a></p>
 
-
-安装Hexo
-npm 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/07/Start/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -515,6 +493,8 @@ npm
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -527,7 +507,7 @@ npm
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WHJason">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -539,59 +519,64 @@ npm
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/07/Hive/over/" itemprop="url">Hive高级函数：窗口函数、分析函数、增强group</a></h2>
+                
+                <a href="/2019/07/07/Hive/over/" class="post-title-link" itemprop="url">Hive高级函数：窗口函数、分析函数、增强group</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">
-                2019-07-07
-              </time>
-            
 
-            
-              <span class="post-meta-divider">|</span>
-            
+              
+                
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-08T13:50:35+08:00">
-                2019-07-08
-              </time>
-            
-          </span>
+              <time title="Created: 2019-07-07 12:33:48" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">2019-07-07</time>
+            </span>
+          
 
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-08 13:50:35" itemprop="dateModified" datetime="2019-07-08T13:50:35+08:00">2019-07-08</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hive/" itemprop="url" rel="index">
-                    <span itemprop="name">Hive</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -601,55 +586,17 @@ npm
 
           
             
+            
           
 
           
           
-             <span id="/2019/07/07/Hive/over/" class="leancloud_visitors" data-flag-title="Hive高级函数：窗口函数、分析函数、增强group">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
           
 
+          <br>
           
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.9k
-                </span>
-              
 
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
           
 
           
@@ -669,41 +616,1071 @@ npm
       
         
           
-          窗口函数与分析函数应用场景：（1）用于分区排序（2）动态Group By（3）Top N（4）累计计算（5）层次查询
-窗口函数
+            <h3 id="窗口函数与分析函数"><a href="#窗口函数与分析函数" class="headerlink" title="窗口函数与分析函数"></a><strong>窗口函数与分析函数</strong></h3><p><strong>应用场景：</strong><br>（1）用于分区排序<br>（2）动态Group By<br>（3）Top N<br>（4）累计计算<br>（5）层次查询</p>
+<h4 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a><strong>窗口函数</strong></h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FIRST_VALUE</td>
+<td>取分组内排序后，截止到当前行，第一个值</td>
+</tr>
+<tr>
+<td>LAST_VALUE</td>
+<td>取分组内排序后，截止到当前行，最后一个值</td>
+</tr>
+<tr>
+<td>LEAD(col,n,DEFAULT)</td>
+<td>用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选，默认为1），第三个参数为默认值（当往下第n行为NULL时候，取默认值，如不指定，则为NULL）</td>
+</tr>
+<tr>
+<td>LAG(col,n,DEFAULT)</td>
+<td>与lead相反，用于统计窗口内往上第n行值。第一个参数为列名，第二个参数为往上第n行（可选，默认为1），第三个参数为默认值（当往上第n行为NULL时候，取默认值，如不指定，则为NULL）</td>
+</tr>
+</tbody></table>
+<h4 id="OVER从句"><a href="#OVER从句" class="headerlink" title="OVER从句"></a>OVER从句</h4><p>1、使用标准的聚合函数<code>COUNT、SUM、MIN、MAX、AVG</code><br>2、使用<code>PARTITION BY</code>语句，使用一个或者多个原始数据类型的列<br>3、使用<code>PARTITION BY</code>与<code>ORDER BY</code>语句，使用一个或者多个数据类型的分区或者排序列<br>4、使用窗口规范，窗口规范支持以下格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN (UNBOUNDED | [num]) PRECEDING AND ([num] PRECEDING | CURRENT ROW | (UNBOUNDED | [num]) FOLLOWING)</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN CURRENT ROW AND (CURRENT ROW | (UNBOUNDED | [num]) FOLLOWING)</span><br></pre></td></tr></table></figure>
 
-函数
-功能
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN [num] FOLLOWING AND (UNBOUNDED | [num]) FOLLOWING</span><br></pre></td></tr></table></figure>
 
+<p>当<code>ORDER BY</code>后面缺少窗口从句条件，窗口规范默认是 <code>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code>.</p>
+<p>当<code>ORDER BY</code>和窗口从句都缺失, 窗口规范默认是 <code>ROW BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</code>.</p>
+<p><code>OVER</code>从句支持以下函数， 但是并不支持和窗口一起使用它们。<br>Ranking函数: <code>Rank, NTile, DenseRank, CumeDist, PercentRank</code>.<br><code>Lead</code> 和 <code>Lag</code> 函数.</p>
+<h4 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a><strong>分析函数</strong></h4><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ROW_NUMBER()</td>
+<td>从1开始，按照顺序，生成分组内记录的序列,比如，按照pv降序排列，生成分组内每天的pv名次,ROW_NUMBER()的应用场景非常多，再比如，获取分组内排序第一的记录;获取一个session中的第一条refer等。</td>
+</tr>
+<tr>
+<td>RANK()</td>
+<td>生成数据项在分组中的排名，排名相等会在名次中留下空位</td>
+</tr>
+<tr>
+<td>DENSE_RANK()</td>
+<td>生成数据项在分组中的排名，排名相等会在名次中不会留下空位</td>
+</tr>
+<tr>
+<td>CUME_DIST</td>
+<td>小于等于当前值的行数/分组内总行数。比如，统计小于等于当前薪水的人数，所占总人数的比例</td>
+</tr>
+<tr>
+<td>PERCENT_RANK</td>
+<td>分组内当前行的RANK值-1/分组内总行数-1</td>
+</tr>
+<tr>
+<td>NTILE(n)</td>
+<td>用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布。NTILE不支持ROWS BETWEEN，比如 NTILE(2) OVER(PARTITION BY cookieid ORDER BY createtime ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)</td>
+</tr>
+</tbody></table>
+<p><strong>Hive2.1.0及以后支持Distinct</strong></p>
+<p>在聚合函数（SUM, COUNT and AVG）中，支持distinct，但是在ORDER BY 或者 窗口限制不支持。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT a) OVER (PARTITION BY c)1</span><br></pre></td></tr></table></figure>
 
+<p><strong>Hive 2.2.0中在使用ORDER BY和窗口限制时支持distinct</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT a) OVER (PARTITION BY c ORDER BY d ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)1</span><br></pre></td></tr></table></figure>
 
-FIRST_VALUE
-取分组内排序后，截止到当前行，第一个值
+<h4 id="Hive2-1-0及以后支持在OVER从句中支持聚合函数"><a href="#Hive2-1-0及以后支持在OVER从句中支持聚合函数" class="headerlink" title="Hive2.1.0及以后支持在OVER从句中支持聚合函数"></a><strong>Hive2.1.0及以后支持在OVER从句中支持聚合函数</strong></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">rank</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">sum</span>(b))</span><br><span class="line"><span class="keyword">FROM</span> T</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> a;123</span><br></pre></td></tr></table></figure>
 
+<p><strong>测试数据集：</strong> </p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>device_id</th>
+<th>user_type</th>
+<th>amount</th>
+<th>sex</th>
+<th>sales</th>
+<th>log_time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>d_001</td>
+<td>new</td>
+<td>60</td>
+<td>man</td>
+<td>9</td>
+<td>2019-07-01</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>d_001</td>
+<td>old</td>
+<td>40</td>
+<td>women</td>
+<td>6</td>
+<td>2019-07-03</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>d_001</td>
+<td>new</td>
+<td>80</td>
+<td>man</td>
+<td>5</td>
+<td>2019-07-04</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>d_001</td>
+<td>new</td>
+<td>50</td>
+<td>man</td>
+<td>4</td>
+<td>2019-07-05</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>d_001</td>
+<td>new</td>
+<td>30</td>
+<td>man</td>
+<td>7</td>
+<td>2019-07-07</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>d_002</td>
+<td>old</td>
+<td>70</td>
+<td>women</td>
+<td>10</td>
+<td>2019-07-02</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>d_002</td>
+<td>old</td>
+<td>90</td>
+<td>man</td>
+<td>2</td>
+<td>2019-07-03</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>d_002</td>
+<td>new</td>
+<td>10</td>
+<td>women</td>
+<td>1</td>
+<td>2019-07-04</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>d_002</td>
+<td>new</td>
+<td>20</td>
+<td>women</td>
+<td>3</td>
+<td>2019-07-06</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>d_002</td>
+<td>new</td>
+<td>100</td>
+<td>women</td>
+<td>8</td>
+<td>2019-07-17</td>
+</tr>
+</tbody></table>
+<h2 id="COUNT、SUM、MIN、MAX、AVG"><a href="#COUNT、SUM、MIN、MAX、AVG" class="headerlink" title="COUNT、SUM、MIN、MAX、AVG"></a>COUNT、SUM、MIN、MAX、AVG</h2><h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,</span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="comment">--默认为从起点到当前行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span>) <span class="keyword">AS</span> sales_1,</span><br><span class="line">    <span class="comment">--从起点到当前行，结果与sales_1相同（若排序字段有重复值则回出现不同，不稳定排序）。</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">AS</span> sales_2,</span><br><span class="line">    <span class="comment">--当前行+往前3行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">AS</span> sales_3,</span><br><span class="line">    <span class="comment">--当前行+往前3行+往后1行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="number">1</span> <span class="keyword">FOLLOWING</span>) <span class="keyword">AS</span> sales_4,</span><br><span class="line">    <span class="comment">--当前行+往后所有行  </span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span> <span class="keyword">AND</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">FOLLOWING</span>) <span class="keyword">AS</span> sales_5,</span><br><span class="line">    <span class="comment">--分组内所有行</span></span><br><span class="line">    <span class="keyword">SUM</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type) <span class="keyword">AS</span> sales_6                          </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    user_id</span><br></pre></td></tr></table></figure>
 
-LAST_VALUE
-取分组内排序后，截止到当前行，最后一个值
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>sales_1</th>
+<th>sales_2</th>
+<th>sales_3</th>
+<th>sales_4</th>
+<th>sales_5</th>
+<th>sales_6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>37</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+<td>36</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>13</td>
+<td>33</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>13</td>
+<td>13</td>
+<td>13</td>
+<td>20</td>
+<td>29</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>20</td>
+<td>20</td>
+<td>19</td>
+<td>27</td>
+<td>24</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>28</td>
+<td>28</td>
+<td>24</td>
+<td>33</td>
+<td>17</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>37</td>
+<td>37</td>
+<td>29</td>
+<td>29</td>
+<td>9</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>8</td>
+<td>18</td>
+<td>18</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>18</td>
+<td>16</td>
+<td>18</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>10</td>
+<td>18</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意:<br>结果和ORDER BY相关,默认为升序<br>如果不指定ROWS BETWEEN,默认为从起点到当前行;<br>如果不指定ORDER BY，则将分组内所有值累加;</p>
+<p>关键是理解ROWS BETWEEN含义,也叫做WINDOW子句：<br>PRECEDING：往前<br>FOLLOWING：往后<br>CURRENT ROW：当前行<br>UNBOUNDED：无界限（起点或终点）<br>UNBOUNDED PRECEDING：表示从前面的起点<br>UNBOUNDED FOLLOWING：表示到后面的终点<br>其他COUNT、AVG，MIN，MAX，和SUM用法一样。</p>
+<p>max()函数无论有没有order by 都是计算整个分区的最大值</p>
+<p>更多可参考Oracle 数据库的分析语法</p>
+</blockquote>
+<blockquote>
+<p>理解：执行逻辑为先partiton 内order by 然后sum/max/min</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">参考：https://dacoolbaby.iteye.com/blog/1960373</span><br><span class="line">在Hive里面，可以把这一部分独立抽出来做声明。如：</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	user_id,</span><br><span class="line">	user_type,</span><br><span class="line">	sales,</span><br><span class="line">	log_time,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> s,</span><br><span class="line">	<span class="keyword">min</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> mi,</span><br><span class="line">	<span class="keyword">max</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> ma,</span><br><span class="line">	<span class="keyword">avg</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> ag</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	app.order_detail </span><br><span class="line">	<span class="keyword">window</span> w1 <span class="keyword">as</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> user_type <span class="keyword">sort</span> <span class="keyword">by</span> sales <span class="keyword">asc</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">2</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="number">2</span> <span class="keyword">following</span>) ;</span><br><span class="line">	</span><br><span class="line">其中的window w1 则是抽出声明的窗口部分。</span><br><span class="line"></span><br><span class="line">如果在一条Hive SQL涉及到多个窗口函数的引用呢？</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	user_id,</span><br><span class="line">	user_type,</span><br><span class="line">	sales,</span><br><span class="line">	log_time,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> s1,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">over</span> w2 <span class="keyword">as</span> s2</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	app.order_detail </span><br><span class="line">	<span class="keyword">window</span> w1 <span class="keyword">as</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> user_type <span class="keyword">sort</span> <span class="keyword">by</span> sales <span class="keyword">asc</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">2</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="number">2</span> <span class="keyword">following</span>),</span><br><span class="line">	w2 <span class="keyword">as</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> user_type <span class="keyword">sort</span> <span class="keyword">by</span> sales <span class="keyword">asc</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">current</span> <span class="keyword">row</span>) ;</span><br></pre></td></tr></table></figure>
 
+<h4 id="range"><a href="#range" class="headerlink" title="range"></a>range</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">参考：</span><br><span class="line">https://stackoverflow.com/questions/30809097/sum-over-a-date-range-per-group-in-hive</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	user_id,</span><br><span class="line">	user_type,</span><br><span class="line">	sales,</span><br><span class="line">	log_time,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">unix_timestamp</span>(log_time, <span class="string">'yyyy-MM-dd'</span>) <span class="keyword">ASC</span> <span class="keyword">RANGE</span> <span class="keyword">BETWEEN</span> <span class="number">86400</span> <span class="keyword">PRECEDING</span> <span class="keyword">and</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">as</span> <span class="keyword">count</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	app.order_detail</span><br></pre></td></tr></table></figure>
 
-LEAD(co
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/07/Hive/over/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>log_time</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>2019-07-01</td>
+<td>9</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>2019-07-04</td>
+<td>6</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>2019-07-04</td>
+<td>6</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>2019-07-05</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>2019-07-06</td>
+<td>7</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>2019-07-07</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>2019-07-17</td>
+<td>8</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>2019-07-02</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>2019-07-03</td>
+<td>18</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>2019-07-03</td>
+<td>18</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>理解：当前时间往上三天的累积数量 86400=3600*24 （一天）</p>
+</blockquote>
+<h2 id="first-value与last-value"><a href="#first-value与last-value" class="headerlink" title="first_value与last_value"></a>first_value与last_value</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,</span><br><span class="line">    user_type,</span><br><span class="line">    ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> row_num,  </span><br><span class="line">    <span class="keyword">first_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> max_sales_user,</span><br><span class="line">    <span class="keyword">first_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">asc</span>) <span class="keyword">as</span> min_sales_user,</span><br><span class="line">    <span class="keyword">last_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> curr_last_min_user,</span><br><span class="line">    <span class="keyword">last_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">asc</span>) <span class="keyword">as</span> curr_last_max_user</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>row_num</th>
+<th>max_sales_user</th>
+<th>min_sales_user</th>
+<th>curr_last_min_user</th>
+<th>curr_last_max_user</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>new</td>
+<td>7</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_001</td>
+<td>u_001</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>6</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_010</td>
+<td>u_010</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>5</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_005</td>
+<td>u_005</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>4</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_003</td>
+<td>u_003</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>3</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_004</td>
+<td>u_004</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>2</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_009</td>
+<td>u_009</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_008</td>
+<td>u_008</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>3</td>
+<td>u_006</td>
+<td>u_007</td>
+<td>u_006</td>
+<td>u_006</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>2</td>
+<td>u_006</td>
+<td>u_007</td>
+<td>u_002</td>
+<td>u_002</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>1</td>
+<td>u_006</td>
+<td>u_007</td>
+<td>u_007</td>
+<td>u_007</td>
+</tr>
+</tbody></table>
+<h2 id="lead与lag"><a href="#lead与lag" class="headerlink" title="lead与lag"></a>lead与lag</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,device_id,</span><br><span class="line">    <span class="keyword">lead</span>(device_id) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> default_after_one_line,</span><br><span class="line">    lag(device_id) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> default_before_one_line,</span><br><span class="line">    <span class="keyword">lead</span>(device_id,<span class="number">2</span>) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> after_two_line,</span><br><span class="line">    lag(device_id,<span class="number">2</span>,<span class="string">'abc'</span>) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> before_two_line</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<h2 id="RANK、ROW-NUMBER、DENSE-RANK"><a href="#RANK、ROW-NUMBER、DENSE-RANK" class="headerlink" title="RANK、ROW_NUMBER、DENSE_RANK"></a>RANK、ROW_NUMBER、DENSE_RANK</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,user_type,sales,</span><br><span class="line">    <span class="keyword">RANK</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> <span class="keyword">rank</span>,</span><br><span class="line">    ROW_NUMBER() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> row_number,</span><br><span class="line">    <span class="keyword">DENSE_RANK</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> desc_rank</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>log_time</th>
+<th>rank</th>
+<th>desc_rank</th>
+<th>row_number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>2019-07-17</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>2019-07-07</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>2019-07-06</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>2019-07-05</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>2019-07-04</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>2019-07-04</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>2019-07-01</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>2019-07-03</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>2019-07-03</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>2019-07-02</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2 id="NTILE"><a href="#NTILE" class="headerlink" title="NTILE"></a>NTILE</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_type,sales,</span><br><span class="line">    <span class="comment">--分组内将数据分成2片</span></span><br><span class="line">    NTILE(<span class="number">2</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt2,</span><br><span class="line">    <span class="comment">--分组内将数据分成3片    </span></span><br><span class="line">    NTILE(<span class="number">3</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt3,</span><br><span class="line">    <span class="comment">--分组内将数据分成4片    </span></span><br><span class="line">    NTILE(<span class="number">4</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt4,</span><br><span class="line">    <span class="comment">--将所有数据分成4片</span></span><br><span class="line">    NTILE(<span class="number">4</span>) <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> all_nt4</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,</span><br><span class="line">    sales</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>sales</th>
+<th>nt2</th>
+<th>nt3</th>
+<th>nt4</th>
+<th>all_nt4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>8</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>9</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>old</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>old</td>
+<td>10</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<h2 id="求取sale前20-的用户ID"><a href="#求取sale前20-的用户ID" class="headerlink" title="求取sale前20%的用户ID"></a>求取sale前20%的用户ID</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        user_id,</span><br><span class="line">        NTILE(<span class="number">5</span>) <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">desc</span>) <span class="keyword">AS</span> nt</span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">        order_detail</span><br><span class="line">)A</span><br><span class="line"><span class="keyword">where</span> nt=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CUME-DIST、PERCENT-RANK"><a href="#CUME-DIST、PERCENT-RANK" class="headerlink" title="CUME_DIST、PERCENT_RANK"></a>CUME_DIST、PERCENT_RANK</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">user_id,user_type,sales,</span><br><span class="line"><span class="comment">--没有partition,所有数据均为1组</span></span><br><span class="line"><span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> cd1,</span><br><span class="line"><span class="comment">--按照user_type进行分组</span></span><br><span class="line"><span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> cd2 </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>cd1</th>
+<th>cd2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>0.1</td>
+<td>0.14285714285714285</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>0.3</td>
+<td>0.2857142857142857</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>0.4</td>
+<td>0.42857142857142855</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>0.5</td>
+<td>0.5714285714285714</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>0.7</td>
+<td>0.7142857142857143</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>0.8</td>
+<td>0.8571428571428571</td>
+</tr>
+<tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>0.9</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>0.2</td>
+<td>0.3333333333333333</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>0.6</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">user_type,sales,</span><br><span class="line"><span class="comment">--分组内总行数      </span></span><br><span class="line"><span class="keyword">SUM</span>(<span class="number">1</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type) <span class="keyword">AS</span> s, </span><br><span class="line"><span class="comment">--RANK值  </span></span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> r,    </span><br><span class="line"><span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> pr,</span><br><span class="line"><span class="comment">--分组内     </span></span><br><span class="line"><span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> prg </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>sales</th>
+<th>s</th>
+<th>r</th>
+<th>pr</th>
+<th>prg</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new</td>
+<td>1</td>
+<td>7</td>
+<td>1</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>new</td>
+<td>3</td>
+<td>7</td>
+<td>3</td>
+<td>0.2222222222222222</td>
+<td>0.16666666666666666</td>
+</tr>
+<tr>
+<td>new</td>
+<td>4</td>
+<td>7</td>
+<td>4</td>
+<td>0.3333333333333333</td>
+<td>0.3333333333333333</td>
+</tr>
+<tr>
+<td>new</td>
+<td>5</td>
+<td>7</td>
+<td>5</td>
+<td>0.4444444444444444</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>new</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>0.6666666666666666</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>new</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>0.7777777777777778</td>
+<td>0.8333333333333334</td>
+</tr>
+<tr>
+<td>new</td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>0.8888888888888888</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>0.1111111111111111</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>old</td>
+<td>6</td>
+<td>3</td>
+<td>6</td>
+<td>0.5555555555555556</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>old</td>
+<td>10</td>
+<td>3</td>
+<td>10</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<h3 id="增强的聚合-Cube和Grouping-和Rollup"><a href="#增强的聚合-Cube和Grouping-和Rollup" class="headerlink" title="增强的聚合 Cube和Grouping 和Rollup"></a>增强的聚合 Cube和Grouping 和Rollup</h3><p>这几个分析函数通常用于OLAP中，不能累加，而且需要根据不同维度上钻和下钻的指标统计，比如，分小时、天、月的UV数。</p>
+<p><strong>GROUPING SETS</strong><br>在一个GROUP BY查询中，根据不同的维度组合进行聚合，等价于将不同维度的GROUP BY结果集进行UNION ALL,<br>其中的GROUPING__ID，表示结果属于哪一个分组集合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">GROUPING</span> <span class="keyword">SETS</span>(user_type,sales) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">GROUPING</span> <span class="keyword">SETS</span>(user_type,sales,(user_type,sales)) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CUBE</strong><br>根据GROUP BY的维度的所有组合进行聚合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">CUBE</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>log_time</th>
+<th>pv</th>
+<th>grouping__id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NULL</td>
+<td>NULL</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-01</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-02</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-03</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-04</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-05</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-06</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-07</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-17</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>NULL</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-01</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-04</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-05</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-06</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-07</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-17</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>old</td>
+<td>NULL</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2019-07-02</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2019-07-03</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p><strong>ROLLUP</strong><br>是CUBE的子集，以最左侧的维度为主，从该维度进行层级聚合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">ROLLUP</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br></pre></td></tr></table></figure>
+
+<p>题：</p>
+<ol>
+<li><p>设备总共使用天数和最早、最晚使用的用户和时间</p>
+</li>
+<li><p>设备连续使用最长的天数</p>
+</li>
+<li><p>前三天的销售额，后三天的销售额？</p>
+</li>
+<li><p>每5分钟统计前一小时的在线人数</p>
+</li>
+</ol>
+<hr>
+<p>参考：</p>
+<ol>
+<li><strong><a href="https://blog.csdn.net/scgaliguodong123_/article/details/60881166" target="_blank" rel="noopener">https://blog.csdn.net/scgaliguodong123_/article/details/60881166</a></strong> </li>
+<li><strong><a href="https://blog.csdn.net/scgaliguodong123_/article/details/60135385" target="_blank" rel="noopener">https://blog.csdn.net/scgaliguodong123_/article/details/60135385</a></strong></li>
+<li><strong><a href="https://dacoolbaby.iteye.com/blog/1960373" target="_blank" rel="noopener">https://dacoolbaby.iteye.com/blog/1960373</a></strong></li>
+<li><strong><a href="https://stackoverflow.com/questions/30809097/sum-over-a-date-range-per-group-in-hive" target="_blank" rel="noopener">https://stackoverflow.com/questions/30809097/sum-over-a-date-range-per-group-in-hive</a></strong></li>
+<li><a href="https://blog.csdn.net/Abysscarry/article/details/81408265" target="_blank" rel="noopener">https://blog.csdn.net/Abysscarry/article/details/81408265</a></li>
+<li><a href="http://lxw1234.com/archives/2015/07/367.htm" target="_blank" rel="noopener">http://lxw1234.com/archives/2015/07/367.htm</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+WindowingAndAnalytics" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+WindowingAndAnalytics</a></li>
+</ol>
+
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -736,6 +1713,8 @@ LEAD(co
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -746,7 +1725,7 @@ LEAD(co
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WHJason">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -758,59 +1737,54 @@ LEAD(co
 
         
         
-          <h2 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/07/Hive/rank/" itemprop="url">Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法</a></h2>
+                
+                <a href="/2019/07/07/Hive/rank/" class="post-title-link" itemprop="url">Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">
-                2019-07-07
-              </time>
-            
 
-            
-              <span class="post-meta-divider">|</span>
-            
+              
+                
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-07T22:51:02+08:00">
-                2019-07-07
-              </time>
-            
-          </span>
+              <time title="Created: 2019-07-07 12:33:48 / Modified: 22:51:02" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">2019-07-07</time>
+            </span>
+          
 
           
-            <span class="post-category">
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hive/" itemprop="url" rel="index">
-                    <span itemprop="name">Hive</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -820,55 +1794,17 @@ LEAD(co
 
           
             
+            
           
 
           
           
-             <span id="/2019/07/07/Hive/rank/" class="leancloud_visitors" data-flag-title="Hive 中窗口函数row_number(),rank(),dense_ran(),ntile()分析函数的用法">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
 
           
 
+          <br>
           
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  480
-                </span>
-              
 
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
           
 
           
@@ -888,32 +1824,230 @@ LEAD(co
       
         
           
-          hive中一般取topN时，row_number(),rank(),dense_ran()这三个函数就派上用场了，
+            <p>hive中一般取topN时，row_number(),rank(),dense_ran()这三个函数就派上用场了，</p>
+<ol>
+<li>rank()函数</li>
+</ol>
+<p>此排序方法进行排序时，相同的排序是一样的，而且下一个不同值是跳着排序的。</p>
+<ol start="2">
+<li>row_number()函数</li>
+</ol>
+<p>此方法不管排名是否有相同的，都按照顺序1，2，3…..n </p>
+<ol start="3">
+<li>dense_rank()函数</li>
+</ol>
+<p>此方法对于排名相同的名次一样，且后面名次不跳跃</p>
+<p>通过代码运行结果一看就明白了。</p>
+<p>示例数据:</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>姓名</th>
+<th>销量（K）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Tom</td>
+<td>10</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tom</td>
+<td>12</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jack</td>
+<td>13</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jack</td>
+<td>12</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tom</td>
+<td>14</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tom</td>
+<td>15</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tom</td>
+<td>13</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Jack</td>
+<td>11</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tom</td>
+<td>16</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Jack</td>
+<td>17</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Tom</td>
+<td>14</td>
+</tr>
+</tbody></table>
+<p>sql语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">	<span class="keyword">id</span>,</span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line">	sal,</span><br><span class="line">	<span class="keyword">rank</span>()<span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span> ) <span class="keyword">rank</span>,</span><br><span class="line">	<span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span> ) desc_rank,</span><br><span class="line">	row_number()<span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) row_number</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">	table_rank_data</span><br></pre></td></tr></table></figure>
 
-rank()函数
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>sal</th>
+<th>rank</th>
+<th></th>
+<th>desc_rank</th>
+<th>row_number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>Jack</td>
+<td>17</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Jack</td>
+<td>13</td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jack</td>
+<td>12</td>
+<td>3</td>
+<td></td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Jack</td>
+<td>11</td>
+<td>4</td>
+<td></td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Tom</td>
+<td>16</td>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tom</td>
+<td>15</td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Tom</td>
+<td>14</td>
+<td><u><strong>3</strong></u></td>
+<td></td>
+<td><u><strong>3</strong></u></td>
+<td><u><strong>3</strong></u></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tom</td>
+<td>14</td>
+<td><u><strong>3</strong></u></td>
+<td></td>
+<td><strong>3</strong></td>
+<td><u><strong>4</strong></u></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Tom</td>
+<td>13</td>
+<td><u><strong>5</strong></u></td>
+<td></td>
+<td><u><strong>4</strong></u></td>
+<td><u><strong>5</strong></u></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tom</td>
+<td>12</td>
+<td>6</td>
+<td></td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Tom</td>
+<td>10</td>
+<td>7</td>
+<td></td>
+<td>6</td>
+<td>7</td>
+</tr>
+</tbody></table>
+<p>题目：正好听到一个需求，求sal前50%的人</p>
+<p>用这个写了一下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">select</span></span><br><span class="line">			<span class="keyword">id</span>,</span><br><span class="line">			<span class="keyword">name</span>,</span><br><span class="line">			sal,</span><br><span class="line">			<span class="keyword">rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) rp,</span><br><span class="line">			<span class="keyword">dense_rank</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) drp,</span><br><span class="line">			row_number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) rmp,</span><br><span class="line">			<span class="keyword">count</span>( *) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span>) * <span class="number">0.5</span> <span class="keyword">as</span> <span class="keyword">count</span></span><br><span class="line">		<span class="keyword">from</span></span><br><span class="line">   			table_rank_data</span><br><span class="line">	)</span><br><span class="line">	t</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">	t.rp &lt; t.count;</span><br></pre></td></tr></table></figure>
 
-此排序方法进行排序时，相同的排序是一样的，而且下一个不同值是跳着排序的。
+<p>感觉虽然可以实现，但是有点复杂，有没有更好的方法实现呢？</p>
+<p>NTILE</p>
+<p>NTILE(n)，用于将分组数据按照顺序切分成n片，返回当前切片值</p>
+<p>NTILE不支持ROWS BETWEEN，比如 NTILE(2) OVER(PARTITION BY cookieid ORDER BY createtime ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)</p>
+<p>如果切片不均匀，默认增加第一个切片的分布</p>
+<p>上面那个例子 正好可以用到这个</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">select</span></span><br><span class="line">			<span class="keyword">id</span>,</span><br><span class="line">			<span class="keyword">name</span>,</span><br><span class="line">			sal,</span><br><span class="line">			NTILE(<span class="number">2</span>) <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> <span class="keyword">name</span> <span class="keyword">order</span> <span class="keyword">by</span> sal <span class="keyword">desc</span>) rn</span><br><span class="line">		<span class="keyword">from</span></span><br><span class="line">			table_rank_data</span><br><span class="line">	)</span><br><span class="line">	t</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">	t.rn = <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-row_number()函数
 
-此方法不管排名是否有相同的，都按照顺序1，2，3…..
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/07/Hive/rank/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -946,9 +2080,6 @@ row_number()函数
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -962,106 +2093,95 @@ row_number()函数
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
-      <div id="sidebar-dimmer"></div>
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="WHJason">
-            
               <p class="site-author-name" itemprop="name">WHJason</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/gofreehj" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:gofreehj@163.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            
+              <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
           
 
           
           
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://github.com/gofreehj" title="GitHub" target="_blank">GitHub</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
 
+          
+            
+          
           
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -1069,6 +2189,7 @@ row_number()函数
 
     </div>
   </aside>
+  
 
 
         
@@ -1078,34 +2199,32 @@ row_number()函数
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">WHJason</span>
 
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Site words total count&#58;</span>
-    
-    <span title="Site words total count">4k</span>
+
   
 </div>
 
 
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 
+  <span class="post-meta-divider">|</span>
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.2.0</div>
 
 
 
 
         
+
 
 
 
@@ -1121,18 +2240,19 @@ row_number()函数
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
-          <span id="scrollpercent"><span>0</span>%</span>
-        
       </div>
     
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1146,106 +2266,11 @@ row_number()函数
 
 
 
-  
 
 
 
 
 
-
-  
-  
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -1259,117 +2284,52 @@ row_number()函数
 
 
   
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.2.0"></script>
 
 
 
   
 
   
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("", "");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
 
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+  <script src="/js/next-boot.js?v=7.2.0"></script>
 
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
 
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
+  
 
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
+  
 
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
+  
 
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            counter.save(null, {
-              success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
+  
 
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
+
+
+  
+
 
 
 
@@ -1378,17 +2338,28 @@ row_number()函数
   
 
   
+
+  
+
+  
+
   
 
   
 
   
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
-
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
