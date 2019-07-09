@@ -138,13 +138,13 @@
 <meta property="og:site_name" content="WHJason">
 <meta property="og:description" content="一图以示之：     类型 定义 语法 等效    内连接 只连接匹配的行 inner join join   左外连接 包含左边表的全部行以及右边表中全部匹配的行 left outer join left join   右外连接 包含右边表的全部行以及左边表中全部匹配的行 right outer join right join   全外连接 包含左、右两个表的全部行，不管在另一边表中是否存在与它">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/join-all.jpg">
-<meta property="og:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/left_smi_join.jpg">
-<meta property="og:updated_time" content="2019-07-09T07:16:13.822Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/join-all.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/left_smi_join.jpg">
+<meta property="og:updated_time" content="2019-07-09T07:49:09.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hive中Join的类型和用法">
 <meta name="twitter:description" content="一图以示之：     类型 定义 语法 等效    内连接 只连接匹配的行 inner join join   左外连接 包含左边表的全部行以及右边表中全部匹配的行 left outer join left join   右外连接 包含右边表的全部行以及左边表中全部匹配的行 right outer join right join   全外连接 包含左、右两个表的全部行，不管在另一边表中是否存在与它">
-<meta name="twitter:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/join-all.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/join-all.jpg">
 
 
 
@@ -394,7 +394,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:16:13+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:49:09+08:00">
                 2019-07-09
               </time>
             
@@ -503,7 +503,7 @@
 
       
         <p>一图以示之：</p>
-<p><img src="/Users/huangjian15/WHJason/gofreehj/images/join-all.jpg" alt="join-all"></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/join-all.jpg" alt="join-all"></p>
 <table>
 <thead>
 <tr>
@@ -590,7 +590,7 @@
 <p>2、left semi join 是只传递表的 join key 给 map 阶段，因此left semi join 中最后 select 的结果只许出现左表。</p>
 <p>3、因为 left semi join 是 in(keySet) 的关系，遇到右表重复记录，左表会跳过，而 join 则会一直遍历。这就导致右表有重复值得情况下 left semi join 只产生一条，join 会产生多条，也会导致 left semi join 的性能更高。 </p>
 <p>比如以下A表和B表进行 join 或 left semi join，然后 select 出所有字段，结果区别如下：</p>
-<p><img src="/Users/huangjian15/WHJason/gofreehj/images/left_smi_join.jpg" alt="left_smi_join"></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/left_smi_join.jpg" alt="left_smi_join"></p>
 <p>注意：蓝色叉的那一列实际是不存在left semi join中的，因为最后 select 的结果只许出现左表。</p>
 <hr>
 <p>参考：</p>
@@ -647,8 +647,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/07/Hive/collect/" rel="next" title="Hive中集合数据类型Struct，Map和Array">
-                <i class="fa fa-chevron-left"></i> Hive中集合数据类型Struct，Map和Array
+              <a href="/2019/07/09/Hive/join_task/" rel="next" title="Hive的三种Join方式">
+                <i class="fa fa-chevron-left"></i> Hive的三种Join方式
               </a>
             
           </div>
@@ -656,10 +656,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/09/Hive/join_task/" rel="prev" title="Hive的三种Join方式">
-                Hive的三种Join方式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

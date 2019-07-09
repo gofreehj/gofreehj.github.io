@@ -138,15 +138,15 @@
 <meta property="og:site_name" content="WHJason">
 <meta property="og:description" content="Hive中就是把Map，Reduce的Join拿过来，通过SQL来表示。参考链接：https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins Common/Shuffle/Reduce Join假设要进行join的数据分别来自File1和File2 common join是一种最简单的join方式，其主要思想如下： 在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/reduce_join.png">
-<meta property="og:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/shuffle.jpg">
-<meta property="og:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/map_join.jpg">
-<meta property="og:image" content="https://images2015.cnblogs.com/blog/918187/201603/918187-20160327102810667-1098918349.png">
-<meta property="og:updated_time" content="2019-07-09T07:15:35.650Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/reduce_join.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/shuffle.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/map_join.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/smb_join.png">
+<meta property="og:updated_time" content="2019-07-09T07:47:49.230Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hive的三种Join方式">
 <meta name="twitter:description" content="Hive中就是把Map，Reduce的Join拿过来，通过SQL来表示。参考链接：https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins Common/Shuffle/Reduce Join假设要进行join的数据分别来自File1和File2 common join是一种最简单的join方式，其主要思想如下： 在">
-<meta name="twitter:image" content="http://yoursite.com/Users/huangjian15/WHJason/gofreehj/images/reduce_join.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/reduce_join.png">
 
 
 
@@ -396,7 +396,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:15:35+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:47:49+08:00">
                 2019-07-09
               </time>
             
@@ -509,13 +509,13 @@
 <p>common join是一种最简单的join方式，其主要思想如下：</p>
 <p>在map阶段，map函数同时读取两个文件File1和File2，为了区分两种来源的key/value数据对，对每条数据打一个标签 （tag）,比如：tag=0表示来自文件File1，tag=2表示来自文件File2。即：map阶段的主要任务是对不同文件中的数据打标签。</p>
 <p>在reduce阶段，reduce函数获取key相同的来自File1和File2文件的value list， 然后对于同一个key，对File1和File2中的数据进行join（笛卡尔乘积）。即：reduce阶段进行实际的连接操作。</p>
-<p><img src="/Users/huangjian15/WHJason/gofreehj/images/reduce_join.png" alt></p>
-<p><img src="/Users/huangjian15/WHJason/gofreehj/images/shuffle.jpg" alt="shuffle"></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/reduce_join.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/shuffle.jpg" alt="shuffle"></p>
 <h3 id="Map-Join"><a href="#Map-Join" class="headerlink" title="Map Join"></a>Map Join</h3><p>之所以存在reduce side join，是因为在map阶段不能获取所有需要的join字段，即：同一个key对应的字段可能位于不同map中。Reduce side join是非常低效的，因为shuffle阶段要进行大量的数据传输。</p>
 <p>Map side join是针对以下场景进行的优化：两个待连接表中，有一个表非常大，而另一个表非常小，以至于小表可以直接存放到内存中。这样，我们可以将小表复制多 份，让每个map task内存中存在一份（比如存放到hash table中），然后只扫描大表：对于大表中的每一条记录key/value，在hash table中查找是否有相同的key的记录，如果有，则连接后输出即可。</p>
 <p>为了支持文件的复制，Hadoop提供了一个类DistributedCache，使用该类的方法如下：</p>
 <p>（1）用户使用静态方法DistributedCache.addCacheFile()指定要复制的文件，它的参数是文件的URI（如果是 HDFS上的文件，可以这样：hdfs://namenode:9000/home/XXX/file，其中9000是自己配置的NameNode端口 号）。JobTracker在作业启动之前会获取这个URI列表，并将相应的文件拷贝到各个TaskTracker的本地磁盘上。（2）用户使用 DistributedCache.getLocalCacheFiles()方法获取文件目录，并使用标准的文件读写API读取相应的文件。</p>
-<p><img src="/Users/huangjian15/WHJason/gofreehj/images/map_join.jpg" alt="map_join"></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/map_join.jpg" alt="map_join"></p>
 <p>1） 大小表连接：</p>
 <p>如果一张表的数据很大，另外一张表很少(&lt;1000行)，那么我们可以将数据量少的那张表放到内存里面，在map端做join。 Hive支持Map Join，用法如下</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="comment">/*+ MAPJOIN(time_dim) */</span> <span class="keyword">count</span>(<span class="number">1</span>) <span class="keyword">from</span></span><br><span class="line">store_sales <span class="keyword">join</span> time_dim <span class="keyword">on</span> (ss_sold_time_sk = t_time_sk)</span><br></pre></td></tr></table></figure>
@@ -553,7 +553,7 @@
 </li>
 <li><p>原理：</p>
 <p>在运行SMB Join的时候会重新创建两张表，当然这是在后台默认做的，不需要用户主动去创建，如下所示：</p>
-<p><img src="https://images2015.cnblogs.com/blog/918187/201603/918187-20160327102810667-1098918349.png" alt="SMB Join"></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/smb_join.png" alt="SMB Join"></p>
 </li>
 </ul>
 <p><strong>设置（默认是false）：</strong></p>
@@ -619,8 +619,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/09/Hive/join/" rel="next" title="Hive中Join的类型和用法">
-                <i class="fa fa-chevron-left"></i> Hive中Join的类型和用法
+              <a href="/2019/07/07/Hive/collect/" rel="next" title="Hive中集合数据类型Struct，Map和Array">
+                <i class="fa fa-chevron-left"></i> Hive中集合数据类型Struct，Map和Array
               </a>
             
           </div>
@@ -628,6 +628,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/09/Hive/join/" rel="prev" title="Hive中Join的类型和用法">
+                Hive中Join的类型和用法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
