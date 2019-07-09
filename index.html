@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,20 +18,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
 
+
+
+
+
+
+
   
   
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
 
 
 
@@ -44,10 +53,6 @@
 
 
 
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -101,42 +106,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
 
 
 
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="WHJason">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="WHJason">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WHJason">
 
 
 
@@ -145,15 +133,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '5.1.3',
+    version: '6.3.0',
     sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
-    fancybox: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: 'undefined',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -165,12 +151,33 @@
 </script>
 
 
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="WHJason">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="WHJason">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WHJason">
+
+
+
+
+
 
   <link rel="canonical" href="http://yoursite.com/">
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>WHJason</title>
   
@@ -181,6 +188,34 @@
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -207,13 +242,11 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <h1 class="site-subtitle" itemprop="description"></h1>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -221,110 +254,73 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+  </li>
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
+    
 
+  
 
-
-    </div>
   
 </nav>
 
 
 
- </div>
+  
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -335,6 +331,8 @@
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -361,37 +359,40 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/09/Hive/join/" itemprop="url">Hive中Join的类型和用法</a></h2>
+                <a class="post-title-link" href="/2019/07/09/Hive/join/" itemprop="url">
+                  Hive中Join的类型和用法
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T12:33:48+08:00">
-                2019-07-09
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-09 12:33:48 / Modified: 15:49:09" itemprop="dateCreated datePublished" datetime="2019-07-09T12:33:48+08:00">2019-07-09</time>
             
 
             
-              <span class="post-meta-divider">|</span>
-            
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:49:09+08:00">
-                2019-07-09
-              </time>
             
           </span>
 
@@ -404,14 +405,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hive/" itemprop="url" rel="index">
-                    <span itemprop="name">Hive</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -420,16 +417,6 @@
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/09/Hive/join/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/09/Hive/join/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -441,7 +428,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -449,37 +436,6 @@
 
           
 
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.5k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 分钟
-                </span>
-              
-            </div>
           
 
           
@@ -491,7 +447,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -499,44 +455,115 @@
       
         
           
-          一图以示之：
+            <p>一图以示之：</p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/join-all.jpg" alt="join-all"></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>定义</th>
+<th>语法</th>
+<th>等效</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内连接</td>
+<td>只连接匹配的行</td>
+<td>inner join</td>
+<td>join</td>
+</tr>
+<tr>
+<td>左外连接</td>
+<td>包含左边表的全部行以及右边表中全部匹配的行</td>
+<td>left outer join</td>
+<td>left join</td>
+</tr>
+<tr>
+<td>右外连接</td>
+<td>包含右边表的全部行以及左边表中全部匹配的行</td>
+<td>right outer join</td>
+<td>right join</td>
+</tr>
+<tr>
+<td>全外连接</td>
+<td>包含左、右两个表的全部行，不管在另一边表中是否存在与它们匹配的行</td>
+<td>full out join</td>
+<td>full join</td>
+</tr>
+<tr>
+<td>左半连接</td>
+<td>以left semi join关键字前面的表为主表，返回主表的KEY也在副表中的记录</td>
+<td>left semi join</td>
+<td></td>
+</tr>
+<tr>
+<td>交叉连接</td>
+<td>生成笛卡尔积—它不适用任何匹配或者选取条件，而是直接讲一个数据源中的每一行与另个数据源的每一行匹配</td>
+<td>cross join</td>
+<td>join 不加on条件</td>
+</tr>
+</tbody></table>
+<h3 id="in-exists"><a href="#in-exists" class="headerlink" title="in/exists"></a>in/exists</h3><h4 id="exists的执行原理："><a href="#exists的执行原理：" class="headerlink" title="exists的执行原理："></a>exists的执行原理：</h4><blockquote>
+<p>对外表做loop循环，每次loop循环再对内表（子查询）进行查询，那么因为对内表的查询使用的索引（内表效率高，故可用大表），而外表有多大都需要遍历，不可避免（尽量用小表），故内表大的使用exists，可加快效率；</p>
+</blockquote>
+<h4 id="in的执行原理"><a href="#in的执行原理" class="headerlink" title="in的执行原理"></a>in的执行原理</h4><blockquote>
+<p>是把外表和内表做hash连接，先查询内表，再把内表结果与外表匹配，对外表使用索引（外表效率高，可用大表），而内表多大都需要查询，不可避免，故外表大的使用in，可加快效率。</p>
+</blockquote>
+<h4 id="使用场景说明："><a href="#使用场景说明：" class="headerlink" title="使用场景说明："></a>使用场景说明：</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	c.CustomerId,</span><br><span class="line">	c.CompanyName</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	Customers c</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	<span class="keyword">EXISTS</span></span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">SELECT</span> OrderID <span class="keyword">FROM</span> Orders o <span class="keyword">WHERE</span> o.CustomerID = c.CustomerID</span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>分析：这里使用exists的原因是，订单表里面可能记录很大，而客户表是一个相当较小的表，这样查询的话 是一种优化方式。</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Orders <span class="keyword">WHERE</span> CustomerId <span class="keyword">in</span> (id1,id2,id3);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	*</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	Orders</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	CustomerID <span class="keyword">in</span> </span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">SELECT</span> CustomerId <span class="keyword">FROM</span> Customers <span class="keyword">WHERE</span> customer_type = <span class="number">1</span></span><br><span class="line">	)</span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>分析 ：这里我只查找客户编号是id1,id2,id3 的人的订单信息.  in就特别合适了。</p>
+</blockquote>
+<p><strong>注意：in后面子查询可以使用任何子查询（或常数），exists后面的只能是相关子查询（不然没意义）</strong></p>
+<h3 id="left-semi-join-与-inner-join-相同点与区别"><a href="#left-semi-join-与-inner-join-相同点与区别" class="headerlink" title="left semi join 与 inner join 相同点与区别"></a>left semi join 与 inner join 相同点与区别</h3><p>hive 的 join 类型有好几种，其实都是把 MR 中的几种方式都封装实现了，其中 join on、left semi join 算是里边具有代表性，且使用频率较高的 join 方式。</p>
+<p>1.联系</p>
+<p>他们都是 hive join 方式的一种，join on 属于 common join（shuffle join/reduce join），而 left semi join 则属于 map join（broadcast join）的一种变体，从名字可以看出他们的实现原理有差异。</p>
+<p>2.区别</p>
+<p>（1）Semi Join，也叫半连接，是从分布式数据库中借鉴过来的方法。它的产生动机是：对于reduce side join，跨机器的数据传输量非常大，这成了join操作的一个瓶颈，如果能够在map端过滤掉不会参加join操作的数据，则可以大大节省网络IO，提升执行效率。<br>实现方法很简单：选取一个小表，假设是File1，将其参与join的key抽取出来，保存到文件File3中，File3文件一般很小，可以放到内存中。在map阶段，使用DistributedCache将File3复制到各个TaskTracker上，然后将File2中不在File3中的key对应的记录过滤掉，剩下的reduce阶段的工作与reduce side join相同。<br>由于 hive 中没有 in/exist 这样的子句（新版将支持），所以需要将这种类型的子句转成 left semi join。left semi join 是只传递表的 join key 给 map 阶段 , 如果 key 足够小还是执行 map join, 如果不是则还是 common join。</p>
+<p>（2）left semi join 子句中右边的表只能在 ON 子句中设置过滤条件，在 WHERE 子句、SELECT 子句或其他地方过滤都不行。</p>
+<p>（3）对待右表中重复key的处理方式差异：因为 left semi join 是 in(keySet) 的关系，遇到右表重复记录，左表会跳过，而 join on 则会一直遍历。</p>
+<p>最后的结果是这会造成性能，以及 join 结果上的差异。</p>
+<p>（4）left semi join 中最后 select 的结果只许出现左表，因为右表只有 join key 参与关联计算了，而 join on 默认是整个关系模型都参与计算了。</p>
+<blockquote>
+<p>注意：大多数情况下 JOIN ON 和 left semi on 是对等的，但是在上述情况下会出现重复记录，导致结果差异，所以大家在使用的时候最好能了解这两种方式的原理，避免掉“坑”。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.key, a.val <span class="keyword">FROM</span> a <span class="keyword">WHERE</span> a.key <span class="keyword">in</span> (<span class="keyword">SELECT</span> b.key <span class="keyword">FROM</span> b);</span><br></pre></td></tr></table></figure>
 
+<p>可以被改写为：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> a.key, a.val <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">SEMI</span> <span class="keyword">JOIN</span> b <span class="keyword">on</span> (a.key = b.key)</span><br></pre></td></tr></table></figure>
 
-类型
-定义
-语法
-等效
+<p>特点：</p>
+<p>1、left semi join 的限制是， JOIN 子句中右边的表只能在 ON 子句中设置过滤条件，在 WHERE 子句、SELECT 子句或其他地方过滤都不行。</p>
+<p>2、left semi join 是只传递表的 join key 给 map 阶段，因此left semi join 中最后 select 的结果只许出现左表。</p>
+<p>3、因为 left semi join 是 in(keySet) 的关系，遇到右表重复记录，左表会跳过，而 join 则会一直遍历。这就导致右表有重复值得情况下 left semi join 只产生一条，join 会产生多条，也会导致 left semi join 的性能更高。 </p>
+<p>比如以下A表和B表进行 join 或 left semi join，然后 select 出所有字段，结果区别如下：</p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/left_smi_join.jpg" alt="left_smi_join"></p>
+<p>注意：蓝色叉的那一列实际是不存在left semi join中的，因为最后 select 的结果只许出现左表。</p>
+<hr>
+<p>参考：</p>
+<p><a href="https://www.cnblogs.com/wqbin/p/11023008.html" target="_blank" rel="noopener">Hive 中的 LEFT SEMI JOIN 与 JOIN ON</a></p>
+<p><a href="https://www.cnblogs.com/liupengpengg/p/7908274.html" target="_blank" rel="noopener">Hive中Join的类型和用法</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/25435517" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/25435517</a></p>
+<p><a href="https://blog.csdn.net/happyrocking/article/details/79885071" target="_blank" rel="noopener">hive 的 left semi join 讲解</a></p>
+<p><a href="https://blog.csdn.net/qq_17776287/article/details/78567514" target="_blank" rel="noopener">MapJoin和ReduceJoin区别及优化</a></p>
 
-
-
-内连接
-只连接匹配的行
-inner join
-join
-
-
-左外连接
-包含左边表的全部行以及右边表中全部匹配的行
-left outer join
-left join
-
-
-右外连接
-包含右边表的全部行以及左边表中全部匹配的行
-right outer 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/09/Hive/join/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+      
+
+
+    
+
     
     
     
@@ -573,6 +600,8 @@ right outer
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -599,37 +628,40 @@ right outer
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/09/Hive/join_task/" itemprop="url">Hive的三种Join方式</a></h2>
+                <a class="post-title-link" href="/2019/07/09/Hive/join_task/" itemprop="url">
+                  Hive的三种Join方式
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T12:33:48+08:00">
-                2019-07-09
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-09 12:33:48 / Modified: 15:47:49" itemprop="dateCreated datePublished" datetime="2019-07-09T12:33:48+08:00">2019-07-09</time>
             
 
             
-              <span class="post-meta-divider">|</span>
-            
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-09T15:47:49+08:00">
-                2019-07-09
-              </time>
             
           </span>
 
@@ -642,14 +674,10 @@ right outer
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hive/" itemprop="url" rel="index">
-                    <span itemprop="name">Hive</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -658,16 +686,6 @@ right outer
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/09/Hive/join_task/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/09/Hive/join_task/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -679,7 +697,7 @@ right outer
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -687,37 +705,6 @@ right outer
 
           
 
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6 分钟
-                </span>
-              
-            </div>
           
 
           
@@ -729,7 +716,7 @@ right outer
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -737,19 +724,85 @@ right outer
       
         
           
-          Hive中就是把Map，Reduce的Join拿过来，通过SQL来表示。参考链接：https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins
-Common/Shuffle/Reduce Join假设要进行join的数据分
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/09/Hive/join_task/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>Hive中就是把Map，Reduce的Join拿过来，通过SQL来表示。<br>参考链接：<a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Joins</a></p>
+<h3 id="Common-Shuffle-Reduce-Join"><a href="#Common-Shuffle-Reduce-Join" class="headerlink" title="Common/Shuffle/Reduce Join"></a>Common/Shuffle/Reduce Join</h3><p>假设要进行join的数据分别来自File1和File2</p>
+<p>common join是一种最简单的join方式，其主要思想如下：</p>
+<p>在map阶段，map函数同时读取两个文件File1和File2，为了区分两种来源的key/value数据对，对每条数据打一个标签 （tag）,比如：tag=0表示来自文件File1，tag=2表示来自文件File2。即：map阶段的主要任务是对不同文件中的数据打标签。</p>
+<p>在reduce阶段，reduce函数获取key相同的来自File1和File2文件的value list， 然后对于同一个key，对File1和File2中的数据进行join（笛卡尔乘积）。即：reduce阶段进行实际的连接操作。</p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/reduce_join.png" alt></p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/shuffle.jpg" alt="shuffle"></p>
+<h3 id="Map-Join"><a href="#Map-Join" class="headerlink" title="Map Join"></a>Map Join</h3><p>之所以存在reduce side join，是因为在map阶段不能获取所有需要的join字段，即：同一个key对应的字段可能位于不同map中。Reduce side join是非常低效的，因为shuffle阶段要进行大量的数据传输。</p>
+<p>Map side join是针对以下场景进行的优化：两个待连接表中，有一个表非常大，而另一个表非常小，以至于小表可以直接存放到内存中。这样，我们可以将小表复制多 份，让每个map task内存中存在一份（比如存放到hash table中），然后只扫描大表：对于大表中的每一条记录key/value，在hash table中查找是否有相同的key的记录，如果有，则连接后输出即可。</p>
+<p>为了支持文件的复制，Hadoop提供了一个类DistributedCache，使用该类的方法如下：</p>
+<p>（1）用户使用静态方法DistributedCache.addCacheFile()指定要复制的文件，它的参数是文件的URI（如果是 HDFS上的文件，可以这样：hdfs://namenode:9000/home/XXX/file，其中9000是自己配置的NameNode端口 号）。JobTracker在作业启动之前会获取这个URI列表，并将相应的文件拷贝到各个TaskTracker的本地磁盘上。（2）用户使用 DistributedCache.getLocalCacheFiles()方法获取文件目录，并使用标准的文件读写API读取相应的文件。</p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/map_join.jpg" alt="map_join"></p>
+<p>1） 大小表连接：</p>
+<p>如果一张表的数据很大，另外一张表很少(&lt;1000行)，那么我们可以将数据量少的那张表放到内存里面，在map端做join。 Hive支持Map Join，用法如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="comment">/*+ MAPJOIN(time_dim) */</span> <span class="keyword">count</span>(<span class="number">1</span>) <span class="keyword">from</span></span><br><span class="line">store_sales <span class="keyword">join</span> time_dim <span class="keyword">on</span> (ss_sold_time_sk = t_time_sk)</span><br></pre></td></tr></table></figure>
+
+<p>2） 需要做不等值join操作（a.x &lt; b.y 或者 a.x like b.y等）</p>
+<p>这种操作如果直接使用join的话语法不支持不等于操作，hive语法解析会直接抛出错误 如果把不等于写到where里会造成笛卡尔积，数据异常增大，速度会很慢。甚至会任务无法跑成功~ 根据mapjoin的计算原理，MapJoin会把小表全部读入内存中，在map阶段直接拿另外一个表的数据和内存中表数据做匹配。这种情况下即使笛卡尔积也不会对任务运行速度造成太大的效率影响。 而且hive的where条件本身就是在map阶段进行的操作，所以在where里写入不等值比对的话，也不会造成额外负担。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="comment">/*+ MAPJOIN(a) */</span></span><br><span class="line">a.start_level, b.*</span><br><span class="line"><span class="keyword">from</span> dim_level a</span><br><span class="line"><span class="keyword">join</span> (<span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span>) b</span><br><span class="line"><span class="keyword">where</span> b.xx&gt;=a.start_level <span class="keyword">and</span> b.xx&lt;end_level;</span><br></pre></td></tr></table></figure>
+
+<p> 3） MAPJOIN 结合 UNIONALL<br>原始sql：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.*,<span class="keyword">coalesce</span>(c.categoryid,’NA’) <span class="keyword">as</span> app_category</span><br><span class="line"><span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> t_aa_pvid_ctr_hour_js_mes1</span><br><span class="line">) a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> * fromt_qd_cmfu_book_info_mes</span><br><span class="line">) c</span><br><span class="line"><span class="keyword">on</span> a.app_id=c.book_id;</span><br></pre></td></tr></table></figure>
+
+<p>速度很慢，老办法，先查下数据分布:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(selectapp_id,<span class="keyword">count</span>(<span class="number">1</span>) cnt</span><br><span class="line">fromt_aa_pvid_ctr_hour_js_mes1</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> app_id) t</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> cnt <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">limit</span> <span class="number">50</span>;</span><br></pre></td></tr></table></figure>
+
+<p>数据分布如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">NA      617370129</span><br><span class="line">2       118293314</span><br><span class="line">1       40673814</span><br><span class="line">d       20151236</span><br><span class="line">b       1846306</span><br><span class="line">s       1124246</span><br><span class="line">5       675240</span><br><span class="line">8       642231</span><br><span class="line">6       611104</span><br><span class="line">t       596973</span><br><span class="line">4       579473</span><br><span class="line">3       489516</span><br><span class="line">7       475999</span><br><span class="line">9       373395</span><br><span class="line">107580  10508</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到除了NA是有问题的异常值，还有appid=1~9的数据也很多，而这些数据是可以关联到的，所以这里不能简单的随机函数了。而fromt_qd_cmfu_book_info_mes这张app库表，又有几百万数据，太大以致不能放入内存使用mapjoin。</p>
+<p>解决方：首先将appid=NA和1到9的数据存入一组，并使用mapjoin与维表（维表也限定appid=1~9，这样内存就放得下了）关联，而除此之外的数据存入另一组，使用普通的join，最后使用union all 放到一起。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> a.*,<span class="keyword">coalesce</span>(c.categoryid,’NA’) <span class="keyword">as</span> app_category</span><br><span class="line"><span class="keyword">from</span> <span class="comment">--if app_id isnot number value or &lt;=9,then not join</span></span><br><span class="line">(<span class="keyword">select</span> * fromt_aa_pvid_ctr_hour_js_mes1</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">cast</span>(app_id asint)&gt;<span class="number">9</span></span><br><span class="line">) a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> * fromt_qd_cmfu_book_info_mes</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">cast</span>(book_id asint)&gt;<span class="number">9</span>) c</span><br><span class="line"><span class="keyword">on</span> a.app_id=c.book_id</span><br><span class="line"><span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line"><span class="keyword">select</span> <span class="comment">/*+ MAPJOIN(c)*/</span></span><br><span class="line">a.*,<span class="keyword">coalesce</span>(c.categoryid,’NA’) <span class="keyword">as</span> app_category</span><br><span class="line"><span class="keyword">from</span> –<span class="keyword">if</span> app_id&lt;=<span class="number">9</span>,<span class="keyword">use</span> <span class="keyword">map</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> * fromt_aa_pvid_ctr_hour_js_mes1</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">coalesce</span>(<span class="keyword">cast</span>(app_id <span class="keyword">as</span> <span class="built_in">int</span>),<span class="number">-999</span>)&lt;=<span class="number">9</span>) a</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span></span><br><span class="line">(<span class="keyword">select</span> * fromt_qd_cmfu_book_info_mes</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">cast</span>(book_id asint)&lt;=<span class="number">9</span>) c</span><br><span class="line"><span class="comment">--if app_id is notnumber value,then not join</span></span><br><span class="line"><span class="keyword">on</span> a.app_id=c.book_id</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>设置：</p>
+<p>当然也可以让hive自动识别，把join变成合适的Map Join如下所示 注：当设置为true的时候，hive会自动获取两张表的数据，判定哪个是小表，然后放在内存中</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.auto.convert.join=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> store_sales <span class="keyword">join</span> time_dim <span class="keyword">on</span> (ss_sold_time_sk = t_time_sk)</span><br></pre></td></tr></table></figure>
+
+<h3 id="SMB-Sort-Merge-Buket-Join"><a href="#SMB-Sort-Merge-Buket-Join" class="headerlink" title="SMB(Sort-Merge-Buket) Join"></a>SMB(Sort-Merge-Buket) Join</h3><ul>
+<li><p>场景：</p>
+<p>大表对小表应该使用MapJoin，但是如果是大表对大表，如果进行shuffle，那就要人命了啊，第一个慢不用说，第二个容易出异常，既然是两个表进行join，肯定有相同的字段吧。</p>
+<p>tb_a - 5亿（按排序分成五份，每份1亿放在指定的数值范围内,类似于分区表） a_id 100001 ~ 110000 - bucket-01-a -1亿 110001 ~ 120000 120001 ~ 130000 130001 ~ 140000 140001 ~ 150000</p>
+<p>tb_b - 5亿（同上，同一个桶只能和对应的桶内数据做join） b_id 100001 ~ 110000 - bucket-01-b -1亿 110001 ~ 120000 120001 ~ 130000 130001 ~ 140000 140001 ~ 150000</p>
+<p><em>注：实际生产环境中，一天的数据可能有50G（举例子可以把数据弄大点，比如说10亿分成1000个bucket）。</em></p>
+</li>
+<li><p>原理：</p>
+<p>在运行SMB Join的时候会重新创建两张表，当然这是在后台默认做的，不需要用户主动去创建，如下所示：</p>
+<p><img src="https://raw.githubusercontent.com/gofreehj/BigData/master/Hive/images/smb_join.png" alt="SMB Join"></p>
+</li>
+</ul>
+<p><strong>设置（默认是false）：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> hive.auto.convert.sortmerge.join=<span class="literal">true</span></span><br><span class="line"><span class="keyword">set</span> hive.optimize.bucketmapjoin=<span class="literal">true</span>;</span><br><span class="line"><span class="keyword">set</span> hive.optimize.bucketmapjoin.sortedmerge=<span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>总结：</p>
+<p>其实在写程序的时候，我们就可以知道哪些是大表哪些是小表，注意调优。</p>
+</li>
+</ul>
+<p>  任务执行计划参见 ： Map join和Common join详解</p>
+<hr>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/u013668852/article/details/79768266" target="_blank" rel="noopener">Hive Join的实现原理</a></p>
+<p><a href="https://www.cnblogs.com/raymoc/p/5323824.html" target="_blank" rel="noopener">Hive的三种Join方式</a></p>
+<p><a href="https://blog.csdn.net/weixin_39216383/article/details/79043299" target="_blank" rel="noopener">Map join和Common join详解</a></p>
+<p><a href="https://www.cnblogs.com/chengyeliang/p/4512207.html" target="_blank" rel="noopener">SQL join中级篇–hive中 mapreduce join方法分析</a></p>
+
+          
         
       
     </div>
+
+    
+      
+
+
+    
+
     
     
     
@@ -786,6 +839,8 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
 
   
   
+  
+
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -812,37 +867,52 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/07/Hive/collect/" itemprop="url">Hive中集合数据类型Struct，Map和Array</a></h2>
+                <a class="post-title-link" href="/2019/07/07/Hive/collect/" itemprop="url">
+                  Hive中集合数据类型Struct，Map和Array
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">
-                2019-07-07
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-07 12:33:48" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">2019-07-07</time>
             
 
             
-              <span class="post-meta-divider">|</span>
-            
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">更新于&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-08 21:41:37" itemprop="dateModified" datetime="2019-07-08T21:41:37+08:00">2019-07-08</time>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-08T21:41:37+08:00">
-                2019-07-08
-              </time>
             
           </span>
 
@@ -855,14 +925,10 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hive/" itemprop="url" rel="index">
-                    <span itemprop="name">Hive</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -871,16 +937,6 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/07/Hive/collect/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/07/Hive/collect/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -892,7 +948,7 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -900,37 +956,6 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
 
           
 
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  981 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3 分钟
-                </span>
-              
-            </div>
           
 
           
@@ -942,7 +967,7 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -950,30 +975,69 @@ Common/Shuffle/Reduce Join假设要进行join的数据分
       
         
           
-          Hive中的列支持使用struct，map和array集合数据类型。下表中的数据类型实际上调用的是内置函数。
-Hive集合数据类型:
+            <p>Hive中的列支持使用struct，map和array集合数据类型。下表中的数据类型实际上调用的是内置函数。</p>
+<p>Hive集合数据类型:</p>
+<table>
+<thead>
+<tr>
+<th><strong>数据类型</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>字面语法示例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STRUCT</td>
+<td>数据类型描述字面语法示例和C语言中的struct或者“对象”类似，都可以通过“点”符号访问元素内容。例如，如果某个列的数据类型是 STRUCT { first STRING , last STRING} ，那么第 1 个元素可以通过字段名.first来引用</td>
+<td>struct(‘John’,’Doe’)</td>
+</tr>
+<tr>
+<td>MAP</td>
+<td>MAP 是一组键一值对元组集合，使用数组表示法(例如[‘key’]) 可以访问元素。例如，如果某个列的数据类型是 MAP ，其中键 值对是’first’ -&gt; ‘John’ 和’last’ -&gt; ‘Doe’，那么可以通过字段名[‘last’]获取最后 1 个元素</td>
+<td>map(‘first’,’JOIN’,’last’,’Doe’)</td>
+</tr>
+<tr>
+<td>ARRAY</td>
+<td>数组是一组具有相同类型和名称的变量的集合。这些变量称为数组的元素，每个数组元素都有一个编号，编号从零开始。例如，数组值为［’John’, ‘Doe’] , 那么第 2 个元素可以通过数组名[1]进行引用</td>
+<td>Array(‘John’,’Doe’)</td>
+</tr>
+</tbody></table>
+<p>和基本数据类型一样，这些类型的名称同样是保留字。</p>
+<p>大多数的关系型数据库并不支持这些集合数据类型，因此使用它们会趋向于破坏标准格式。例如，在传统数据模型中，structs可能需要由多个不同的表拼装而成，表间需要适当地使用外键来进行连接。</p>
+<p>破坏标准格式所带来的一个实际问题是会增大数据冗余的风险，进而导致消耗不必要的磁盘空间，还有可能造成数据不一致，因此当数据发生改变时冗余的拷贝数据可能无法进行相应的同步。</p>
+<p>然而，在大数据系统中，不遵循标准格式的一个好处就是可以提高更高吞吐量的数据。当处理的数据的数量级是TB或者PB时，以最少的“头部寻址”来从磁盘上扫描数据是非常必要的。按数据进行封装的话可以通过减少寻址次数来提供查询的速度。而如果根据外键关系关联的话则需要进行磁盘间的寻址操作，这样会有非常高的性能消耗。</p>
+<p>建表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span></span><br><span class="line">	<span class="keyword">table</span> collect_test</span><br><span class="line">	(</span><br><span class="line">		<span class="keyword">id</span> <span class="built_in">INT</span>,</span><br><span class="line">		<span class="keyword">name</span> <span class="keyword">STRING</span>,</span><br><span class="line">		hobby <span class="built_in">ARRAY</span> &lt; <span class="keyword">STRING</span> &gt;,                      <span class="comment">-- array中元素为String类型</span></span><br><span class="line">		friend <span class="keyword">MAP</span> &lt; <span class="keyword">STRING</span>,<span class="keyword">STRING</span> &gt;,                <span class="comment">-- map中键和值均为String类型</span></span><br><span class="line">		mark <span class="keyword">struct</span> &lt; math:<span class="built_in">int</span>,english:<span class="built_in">int</span> &gt;         <span class="comment">-- Struct中元素为Int类型</span></span><br><span class="line">	)</span><br><span class="line">	<span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> <span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">','</span>  <span class="comment">-- 字段之间用','分隔</span></span><br><span class="line">	collection items <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'_'</span>             <span class="comment">-- 集合中的元素用'_'分隔</span></span><br><span class="line">	<span class="keyword">map</span> <span class="keyword">keys</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">':'</span>                     <span class="comment">-- map中键值对之间用':'分隔</span></span><br><span class="line">	<span class="keyword">lines</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\n                        -- 行之间用'</span>\n<span class="string">'分隔 默认一般不指定</span></span><br></pre></td></tr></table></figure>
 
+<p>2、向表test_set中插入数据</p>
+<p>1）对于数据量较大，常用的一种方法是通过文件批量导入的方法，比如我现在要将如下的文本中的数据插入到表中</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,xiaoming,basketball_game,xiaohong:yes_xiaohua:no,99_75</span><br><span class="line"></span><br><span class="line">1,xiaohong,watch_study,xiaoming:no_xiaohua:not,95_95</span><br></pre></td></tr></table></figure>
 
+<p>可以采用如下语句来实现</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hive -e "<span class="keyword">load</span> <span class="keyword">data</span> <span class="keyword">local</span> inpath <span class="string">'/path/data.txt'</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span> collect_test<span class="string">"</span></span><br></pre></td></tr></table></figure>
 
-数据类型
-描述
-字面语法示例
+<p>2）对于想插入几条数据时，可以采取insert语句来插入数据，比如我们想插入数据</p>
+<p>2,xiaohua,basketball_read,xiaoming:no_xiaohong:no,90_90<br>可以采用如下语句来实现，分别通过array,str_to_map,named_struct来包装插入的三种集合数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> collect_test</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="number">2</span>,</span><br><span class="line">	<span class="string">'xiaohua'</span>,</span><br><span class="line">	<span class="built_in">array</span>(<span class="string">'basketball'</span>, <span class="string">'read'</span>),</span><br><span class="line">	str_to_map(<span class="string">'xiaoming:no,xiaohong:no'</span>),</span><br><span class="line">	named_struct(<span class="string">'math'</span>, <span class="number">90</span>, <span class="string">'english'</span>, <span class="number">90</span>)</span><br></pre></td></tr></table></figure>
 
+<p>对于集合类型的查询，我们还有一种经常使用的方法，查询语句如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">	<span class="keyword">id</span>,</span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line">	hobby[<span class="number">0</span>], 					<span class="comment">-- 查询第一个hobby</span></span><br><span class="line">	friend[<span class="string">'xiaohong'</span>], <span class="comment">-- 查询map键为xiaohong的value</span></span><br><span class="line">	mark.math 					<span class="comment">-- 查询struct中math的值</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	test_set</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">	<span class="keyword">name</span> = <span class="string">'xiaoming'</span></span><br></pre></td></tr></table></figure>
 
+<hr>
+<p>参考：</p>
+<p>1.<a href="https://blog.csdn.net/qq_41973536/article/details/81627918" target="_blank" rel="noopener">https://blog.csdn.net/qq_41973536/article/details/81627918</a></p>
+<p>2.<a href="https://blog.csdn.net/u014414323/article/details/83616361" target="_blank" rel="noopener">https://blog.csdn.net/u014414323/article/details/83616361</a></p>
 
-STRUCT
-数据类型描述字面语法示例和C语言中的struct或者“对象”类似，都可以通过“点”符号访问元素内容。例如，如果
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/07/Hive/collect/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
+
+    
+      
+
+
+    
+
     
     
     
@@ -1012,6 +1076,8 @@ STRUCT
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1036,37 +1102,52 @@ STRUCT
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/07/Hive/over/" itemprop="url">Hive高级函数：窗口函数、分析函数、增强group</a></h2>
+                <a class="post-title-link" href="/2019/07/07/Hive/over/" itemprop="url">
+                  Hive高级函数：窗口函数、分析函数、增强group
+                </a>
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">
-                2019-07-07
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-07 12:33:48" itemprop="dateCreated datePublished" datetime="2019-07-07T12:33:48+08:00">2019-07-07</time>
             
 
             
-              <span class="post-meta-divider">|</span>
-            
+              
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">更新于&#58;</span>
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-08 18:16:16" itemprop="dateModified" datetime="2019-07-08T18:16:16+08:00">2019-07-08</time>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-08T18:16:16+08:00">
-                2019-07-08
-              </time>
             
           </span>
 
@@ -1079,14 +1160,10 @@ STRUCT
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hive/" itemprop="url" rel="index">
-                    <span itemprop="name">Hive</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hive/" itemprop="url" rel="index"><span itemprop="name">Hive</span></a></span>
 
                 
                 
@@ -1095,16 +1172,6 @@ STRUCT
           
 
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/07/Hive/over/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/07/Hive/over/" itemprop="commentCount"></span>
-                </a>
-              </span>
             
           
 
@@ -1116,7 +1183,7 @@ STRUCT
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1124,37 +1191,6 @@ STRUCT
 
           
 
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.9k 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14 分钟
-                </span>
-              
-            </div>
           
 
           
@@ -1166,7 +1202,7 @@ STRUCT
     
     
     
-    <div class="post-body" itemprop="articleBody">
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
       
@@ -1174,35 +1210,1067 @@ STRUCT
       
         
           
-          窗口函数与分析函数应用场景:（1）用于分区排序（2）动态Group By（3）Top N（4）累计计算（5）层次查询
-窗口函数
+            <h1 id="窗口函数与分析函数"><a href="#窗口函数与分析函数" class="headerlink" title="窗口函数与分析函数"></a>窗口函数与分析函数</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景:"></a>应用场景:</h2><p>（1）用于分区排序<br>（2）动态Group By<br>（3）Top N<br>（4）累计计算<br>（5）层次查询</p>
+<h2 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FIRST_VALUE</td>
+<td>取分组内排序后，截止到当前行，第一个值</td>
+</tr>
+<tr>
+<td>LAST_VALUE</td>
+<td>取分组内排序后，截止到当前行，最后一个值</td>
+</tr>
+<tr>
+<td>LEAD(col,n,DEFAULT)</td>
+<td>用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选，默认为1），第三个参数为默认值（当往下第n行为NULL时候，取默认值，如不指定，则为NULL）</td>
+</tr>
+<tr>
+<td>LAG(col,n,DEFAULT)</td>
+<td>与lead相反，用于统计窗口内往上第n行值。第一个参数为列名，第二个参数为往上第n行（可选，默认为1），第三个参数为默认值（当往上第n行为NULL时候，取默认值，如不指定，则为NULL）</td>
+</tr>
+</tbody></table>
+<p><strong>OVER从句</strong></p>
+<p>1、使用标准的聚合函数<code>COUNT、SUM、MIN、MAX、AVG</code><br>2、使用<code>PARTITION BY</code>语句，使用一个或者多个原始数据类型的列<br>3、使用<code>PARTITION BY</code>与<code>ORDER BY</code>语句，使用一个或者多个数据类型的分区或者排序列<br>4、使用窗口规范，窗口规范支持以下格式：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN (UNBOUNDED | [num]) PRECEDING AND ([num] PRECEDING | CURRENT ROW | (UNBOUNDED | [num]) FOLLOWING)</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN CURRENT ROW AND (CURRENT ROW | (UNBOUNDED | [num]) FOLLOWING)</span><br></pre></td></tr></table></figure>
 
-函数
-功能
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ROWS | RANGE) BETWEEN [num] FOLLOWING AND (UNBOUNDED | [num]) FOLLOWING</span><br></pre></td></tr></table></figure>
 
+<p>当<code>ORDER BY</code>后面缺少窗口从句条件，窗口规范默认是 <code>RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code>.</p>
+<p>当<code>ORDER BY</code>和窗口从句都缺失, 窗口规范默认是 <code>ROW BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</code>.</p>
+<p><code>OVER</code>从句支持以下函数， 但是并不支持和窗口一起使用它们。<br>Ranking函数: <code>Rank, NTile, DenseRank, CumeDist, PercentRank</code>.<br><code>Lead</code> 和 <code>Lag</code> 函数.</p>
+<h2 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a>分析函数</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ROW_NUMBER()</td>
+<td>从1开始，按照顺序，生成分组内记录的序列,比如，按照pv降序排列，生成分组内每天的pv名次,ROW_NUMBER()的应用场景非常多，再比如，获取分组内排序第一的记录;获取一个session中的第一条refer等。</td>
+</tr>
+<tr>
+<td>RANK()</td>
+<td>生成数据项在分组中的排名，排名相等会在名次中留下空位</td>
+</tr>
+<tr>
+<td>DENSE_RANK()</td>
+<td>生成数据项在分组中的排名，排名相等会在名次中不会留下空位</td>
+</tr>
+<tr>
+<td>CUME_DIST</td>
+<td>小于等于当前值的行数/分组内总行数。比如，统计小于等于当前薪水的人数，所占总人数的比例</td>
+</tr>
+<tr>
+<td>PERCENT_RANK</td>
+<td>分组内当前行的RANK值-1/分组内总行数-1</td>
+</tr>
+<tr>
+<td>NTILE(n)</td>
+<td>用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布。NTILE不支持ROWS BETWEEN，比如 NTILE(2) OVER(PARTITION BY cookieid ORDER BY createtime ROWS BETWEEN 3 PRECEDING AND CURRENT ROW)</td>
+</tr>
+</tbody></table>
+<p><strong>Hive2.1.0及以后支持Distinct</strong></p>
+<p>在聚合函数（SUM, COUNT and AVG）中，支持distinct，但是在ORDER BY 或者 窗口限制不支持。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT a) OVER (PARTITION BY c)1</span><br></pre></td></tr></table></figure>
 
+<p><strong>Hive 2.2.0中在使用ORDER BY和窗口限制时支持distinct</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">COUNT(DISTINCT a) OVER (PARTITION BY c ORDER BY d ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING)1</span><br></pre></td></tr></table></figure>
 
-FIRST_VALUE
-取分组内排序后，截止到当前行，第一个值
+<p><strong>Hive2.1.0及以后支持在OVER从句中支持聚合函数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">rank</span>() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">sum</span>(b))</span><br><span class="line"><span class="keyword">FROM</span> T</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> a;123</span><br></pre></td></tr></table></figure>
 
+<h2 id="用例"><a href="#用例" class="headerlink" title="用例"></a>用例</h2><h3 id="测试数据集："><a href="#测试数据集：" class="headerlink" title="测试数据集："></a>测试数据集：</h3><table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>device_id</th>
+<th>user_type</th>
+<th>amount</th>
+<th>sex</th>
+<th>sales</th>
+<th>log_time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>d_001</td>
+<td>new</td>
+<td>60</td>
+<td>man</td>
+<td>9</td>
+<td>2019-07-01</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>d_001</td>
+<td>old</td>
+<td>40</td>
+<td>women</td>
+<td>6</td>
+<td>2019-07-03</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>d_001</td>
+<td>new</td>
+<td>80</td>
+<td>man</td>
+<td>5</td>
+<td>2019-07-04</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>d_001</td>
+<td>new</td>
+<td>50</td>
+<td>man</td>
+<td>4</td>
+<td>2019-07-05</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>d_001</td>
+<td>new</td>
+<td>30</td>
+<td>man</td>
+<td>7</td>
+<td>2019-07-07</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>d_002</td>
+<td>old</td>
+<td>70</td>
+<td>women</td>
+<td>10</td>
+<td>2019-07-02</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>d_002</td>
+<td>old</td>
+<td>90</td>
+<td>man</td>
+<td>2</td>
+<td>2019-07-03</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>d_002</td>
+<td>new</td>
+<td>10</td>
+<td>women</td>
+<td>1</td>
+<td>2019-07-04</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>d_002</td>
+<td>new</td>
+<td>20</td>
+<td>women</td>
+<td>3</td>
+<td>2019-07-06</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>d_002</td>
+<td>new</td>
+<td>100</td>
+<td>women</td>
+<td>8</td>
+<td>2019-07-17</td>
+</tr>
+</tbody></table>
+<h2 id="COUNT、SUM、MIN、MAX、AVG"><a href="#COUNT、SUM、MIN、MAX、AVG" class="headerlink" title="COUNT、SUM、MIN、MAX、AVG"></a>COUNT、SUM、MIN、MAX、AVG</h2><h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,</span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="comment">--默认为从起点到当前行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span>) <span class="keyword">AS</span> sales_1,</span><br><span class="line">    <span class="comment">--从起点到当前行，结果与sales_1相同（若排序字段有重复值则回出现不同，不稳定排序）。</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">AS</span> sales_2,</span><br><span class="line">    <span class="comment">--当前行+往前3行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">AS</span> sales_3,</span><br><span class="line">    <span class="comment">--当前行+往前3行+往后1行</span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="number">3</span> <span class="keyword">PRECEDING</span> <span class="keyword">AND</span> <span class="number">1</span> <span class="keyword">FOLLOWING</span>) <span class="keyword">AS</span> sales_4,</span><br><span class="line">    <span class="comment">--当前行+往后所有行  </span></span><br><span class="line">    <span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">asc</span> <span class="keyword">ROWS</span> <span class="keyword">BETWEEN</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span> <span class="keyword">AND</span> <span class="keyword">UNBOUNDED</span> <span class="keyword">FOLLOWING</span>) <span class="keyword">AS</span> sales_5,</span><br><span class="line">    <span class="comment">--分组内所有行</span></span><br><span class="line">    <span class="keyword">SUM</span>(sales) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type) <span class="keyword">AS</span> sales_6                          </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    user_id</span><br></pre></td></tr></table></figure>
 
-LAST_VALUE
-取分组内排序后，截止到当前行，最后一个值
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>sales_1</th>
+<th>sales_2</th>
+<th>sales_3</th>
+<th>sales_4</th>
+<th>sales_5</th>
+<th>sales_6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>37</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>8</td>
+<td>36</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>13</td>
+<td>33</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>13</td>
+<td>13</td>
+<td>13</td>
+<td>20</td>
+<td>29</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>20</td>
+<td>20</td>
+<td>19</td>
+<td>27</td>
+<td>24</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>28</td>
+<td>28</td>
+<td>24</td>
+<td>33</td>
+<td>17</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>37</td>
+<td>37</td>
+<td>29</td>
+<td>29</td>
+<td>9</td>
+<td>37</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>8</td>
+<td>18</td>
+<td>18</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+<td>8</td>
+<td>18</td>
+<td>16</td>
+<td>18</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>18</td>
+<td>10</td>
+<td>18</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意:<br>结果和ORDER BY相关,默认为升序<br>如果不指定ROWS BETWEEN,默认为从起点到当前行;<br>如果不指定ORDER BY，则将分组内所有值累加;</p>
+<p>关键是理解ROWS BETWEEN含义,也叫做WINDOW子句：<br>PRECEDING：往前<br>FOLLOWING：往后<br>CURRENT ROW：当前行<br>UNBOUNDED：无界限（起点或终点）<br>UNBOUNDED PRECEDING：表示从前面的起点<br>UNBOUNDED FOLLOWING：表示到后面的终点<br>其他COUNT、AVG，MIN，MAX，和SUM用法一样。</p>
+<p>max()函数无论有没有order by 都是计算整个分区的最大值</p>
+<p>更多可参考Oracle 数据库的分析语法</p>
+</blockquote>
+<blockquote>
+<p>理解：执行逻辑为先partiton 内order by 然后sum/max/min</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">参考：https://dacoolbaby.iteye.com/blog/1960373</span><br><span class="line">在Hive里面，可以把这一部分独立抽出来做声明。如：</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	user_id,</span><br><span class="line">	user_type,</span><br><span class="line">	sales,</span><br><span class="line">	log_time,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> s,</span><br><span class="line">	<span class="keyword">min</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> mi,</span><br><span class="line">	<span class="keyword">max</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> ma,</span><br><span class="line">	<span class="keyword">avg</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> ag</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	app.order_detail </span><br><span class="line">	<span class="keyword">window</span> w1 <span class="keyword">as</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> user_type <span class="keyword">sort</span> <span class="keyword">by</span> sales <span class="keyword">asc</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">2</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="number">2</span> <span class="keyword">following</span>) ;</span><br><span class="line">	</span><br><span class="line">其中的window w1 则是抽出声明的窗口部分。</span><br><span class="line"></span><br><span class="line">如果在一条Hive SQL涉及到多个窗口函数的引用呢？</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	user_id,</span><br><span class="line">	user_type,</span><br><span class="line">	sales,</span><br><span class="line">	log_time,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">over</span> w1 <span class="keyword">as</span> s1,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">over</span> w2 <span class="keyword">as</span> s2</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	app.order_detail </span><br><span class="line">	<span class="keyword">window</span> w1 <span class="keyword">as</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> user_type <span class="keyword">sort</span> <span class="keyword">by</span> sales <span class="keyword">asc</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="number">2</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="number">2</span> <span class="keyword">following</span>),</span><br><span class="line">	w2 <span class="keyword">as</span>(<span class="keyword">distribute</span> <span class="keyword">by</span> user_type <span class="keyword">sort</span> <span class="keyword">by</span> sales <span class="keyword">asc</span> <span class="keyword">rows</span> <span class="keyword">between</span> <span class="keyword">unbounded</span> <span class="keyword">preceding</span> <span class="keyword">and</span> <span class="keyword">current</span> <span class="keyword">row</span>) ;</span><br></pre></td></tr></table></figure>
 
+<h4 id="range"><a href="#range" class="headerlink" title="range"></a>range</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">参考：</span><br><span class="line">https://stackoverflow.com/questions/30809097/sum-over-a-date-range-per-group-in-hive</span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">	user_id,</span><br><span class="line">	user_type,</span><br><span class="line">	sales,</span><br><span class="line">	log_time,</span><br><span class="line">	<span class="keyword">sum</span>(sales) <span class="keyword">OVER</span>( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">unix_timestamp</span>(log_time, <span class="string">'yyyy-MM-dd'</span>) <span class="keyword">ASC</span> <span class="keyword">RANGE</span> <span class="keyword">BETWEEN</span> <span class="number">86400</span> <span class="keyword">PRECEDING</span> <span class="keyword">and</span> <span class="keyword">CURRENT</span> <span class="keyword">ROW</span>) <span class="keyword">as</span> <span class="keyword">count</span></span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">	app.order_detail</span><br></pre></td></tr></table></figure>
 
-LEAD(co
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/07/Hive/over/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>log_time</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>2019-07-01</td>
+<td>9</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>2019-07-04</td>
+<td>6</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>2019-07-04</td>
+<td>6</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>2019-07-05</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>2019-07-06</td>
+<td>7</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>2019-07-07</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>2019-07-17</td>
+<td>8</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>2019-07-02</td>
+<td>10</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>2019-07-03</td>
+<td>18</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>2019-07-03</td>
+<td>18</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>理解：当前时间往上三天的累积数量 86400=3600*24 （一天）</p>
+</blockquote>
+<h2 id="first-value与last-value"><a href="#first-value与last-value" class="headerlink" title="first_value与last_value"></a>first_value与last_value</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,</span><br><span class="line">    user_type,</span><br><span class="line">    ROW_NUMBER() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> row_num,  </span><br><span class="line">    <span class="keyword">first_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> max_sales_user,</span><br><span class="line">    <span class="keyword">first_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">asc</span>) <span class="keyword">as</span> min_sales_user,</span><br><span class="line">    <span class="keyword">last_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> curr_last_min_user,</span><br><span class="line">    <span class="keyword">last_value</span>(user_id) <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">asc</span>) <span class="keyword">as</span> curr_last_max_user</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>row_num</th>
+<th>max_sales_user</th>
+<th>min_sales_user</th>
+<th>curr_last_min_user</th>
+<th>curr_last_max_user</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_001</td>
+<td>new</td>
+<td>7</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_001</td>
+<td>u_001</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>6</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_010</td>
+<td>u_010</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>5</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_005</td>
+<td>u_005</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>4</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_003</td>
+<td>u_003</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>3</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_004</td>
+<td>u_004</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>2</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_009</td>
+<td>u_009</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>u_001</td>
+<td>u_008</td>
+<td>u_008</td>
+<td>u_008</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>3</td>
+<td>u_006</td>
+<td>u_007</td>
+<td>u_006</td>
+<td>u_006</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>2</td>
+<td>u_006</td>
+<td>u_007</td>
+<td>u_002</td>
+<td>u_002</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>1</td>
+<td>u_006</td>
+<td>u_007</td>
+<td>u_007</td>
+<td>u_007</td>
+</tr>
+</tbody></table>
+<h2 id="lead与lag"><a href="#lead与lag" class="headerlink" title="lead与lag"></a>lead与lag</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,device_id,</span><br><span class="line">    <span class="keyword">lead</span>(device_id) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> default_after_one_line,</span><br><span class="line">    lag(device_id) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> default_before_one_line,</span><br><span class="line">    <span class="keyword">lead</span>(device_id,<span class="number">2</span>) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> after_two_line,</span><br><span class="line">    lag(device_id,<span class="number">2</span>,<span class="string">'abc'</span>) <span class="keyword">over</span> (<span class="keyword">order</span> <span class="keyword">by</span> sales) <span class="keyword">as</span> before_two_line</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<h2 id="RANK、ROW-NUMBER、DENSE-RANK"><a href="#RANK、ROW-NUMBER、DENSE-RANK" class="headerlink" title="RANK、ROW_NUMBER、DENSE_RANK"></a>RANK、ROW_NUMBER、DENSE_RANK</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_id,user_type,sales,</span><br><span class="line">    <span class="keyword">RANK</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> <span class="keyword">rank</span>,</span><br><span class="line">    ROW_NUMBER() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> row_number,</span><br><span class="line">    <span class="keyword">DENSE_RANK</span>() <span class="keyword">over</span> (<span class="keyword">partition</span> <span class="keyword">by</span> user_type <span class="keyword">order</span> <span class="keyword">by</span> sales <span class="keyword">desc</span>) <span class="keyword">as</span> desc_rank</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">    order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>log_time</th>
+<th>rank</th>
+<th>desc_rank</th>
+<th>row_number</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>2019-07-17</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>2019-07-07</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>2019-07-06</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>2019-07-05</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>2019-07-04</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>2019-07-04</td>
+<td>5</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>2019-07-01</td>
+<td>7</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>2019-07-03</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>2019-07-03</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>2019-07-02</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<h2 id="NTILE"><a href="#NTILE" class="headerlink" title="NTILE"></a>NTILE</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">    user_type,sales,</span><br><span class="line">    <span class="comment">--分组内将数据分成2片</span></span><br><span class="line">    NTILE(<span class="number">2</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt2,</span><br><span class="line">    <span class="comment">--分组内将数据分成3片    </span></span><br><span class="line">    NTILE(<span class="number">3</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt3,</span><br><span class="line">    <span class="comment">--分组内将数据分成4片    </span></span><br><span class="line">    NTILE(<span class="number">4</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> nt4,</span><br><span class="line">    <span class="comment">--将所有数据分成4片</span></span><br><span class="line">    NTILE(<span class="number">4</span>) <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> all_nt4</span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,</span><br><span class="line">    sales</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>sales</th>
+<th>nt2</th>
+<th>nt3</th>
+<th>nt4</th>
+<th>all_nt4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>5</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>7</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>8</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>9</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>old</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>old</td>
+<td>10</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+</tbody></table>
+<h2 id="求取sale前20-的用户ID"><a href="#求取sale前20-的用户ID" class="headerlink" title="求取sale前20%的用户ID"></a>求取sale前20%的用户ID</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_id</span><br><span class="line"><span class="keyword">from</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> </span><br><span class="line">        user_id,</span><br><span class="line">        NTILE(<span class="number">5</span>) <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales <span class="keyword">desc</span>) <span class="keyword">AS</span> nt</span><br><span class="line">    <span class="keyword">from</span> </span><br><span class="line">        order_detail</span><br><span class="line">)A</span><br><span class="line"><span class="keyword">where</span> nt=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CUME-DIST、PERCENT-RANK"><a href="#CUME-DIST、PERCENT-RANK" class="headerlink" title="CUME_DIST、PERCENT_RANK"></a>CUME_DIST、PERCENT_RANK</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">user_id,user_type,sales,</span><br><span class="line"><span class="comment">--没有partition,所有数据均为1组</span></span><br><span class="line"><span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> cd1,</span><br><span class="line"><span class="comment">--按照user_type进行分组</span></span><br><span class="line"><span class="keyword">CUME_DIST</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> cd2 </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_id</th>
+<th>user_type</th>
+<th>sales</th>
+<th>cd1</th>
+<th>cd2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>u_008</td>
+<td>new</td>
+<td>1</td>
+<td>0.1</td>
+<td>0.14285714285714285</td>
+</tr>
+<tr>
+<td>u_009</td>
+<td>new</td>
+<td>3</td>
+<td>0.3</td>
+<td>0.2857142857142857</td>
+</tr>
+<tr>
+<td>u_004</td>
+<td>new</td>
+<td>4</td>
+<td>0.4</td>
+<td>0.42857142857142855</td>
+</tr>
+<tr>
+<td>u_003</td>
+<td>new</td>
+<td>5</td>
+<td>0.5</td>
+<td>0.5714285714285714</td>
+</tr>
+<tr>
+<td>u_005</td>
+<td>new</td>
+<td>7</td>
+<td>0.7</td>
+<td>0.7142857142857143</td>
+</tr>
+<tr>
+<td>u_010</td>
+<td>new</td>
+<td>8</td>
+<td>0.8</td>
+<td>0.8571428571428571</td>
+</tr>
+<tr>
+<td>u_001</td>
+<td>new</td>
+<td>9</td>
+<td>0.9</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>u_007</td>
+<td>old</td>
+<td>2</td>
+<td>0.2</td>
+<td>0.3333333333333333</td>
+</tr>
+<tr>
+<td>u_002</td>
+<td>old</td>
+<td>6</td>
+<td>0.6</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>u_006</td>
+<td>old</td>
+<td>10</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> </span><br><span class="line">user_type,sales,</span><br><span class="line"><span class="comment">--分组内总行数      </span></span><br><span class="line"><span class="keyword">SUM</span>(<span class="number">1</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type) <span class="keyword">AS</span> s, </span><br><span class="line"><span class="comment">--RANK值  </span></span><br><span class="line"><span class="keyword">RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> r,    </span><br><span class="line"><span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> pr,</span><br><span class="line"><span class="comment">--分组内     </span></span><br><span class="line"><span class="keyword">PERCENT_RANK</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> user_type <span class="keyword">ORDER</span> <span class="keyword">BY</span> sales) <span class="keyword">AS</span> prg </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">order_detail;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>sales</th>
+<th>s</th>
+<th>r</th>
+<th>pr</th>
+<th>prg</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>new</td>
+<td>1</td>
+<td>7</td>
+<td>1</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>new</td>
+<td>3</td>
+<td>7</td>
+<td>3</td>
+<td>0.2222222222222222</td>
+<td>0.16666666666666666</td>
+</tr>
+<tr>
+<td>new</td>
+<td>4</td>
+<td>7</td>
+<td>4</td>
+<td>0.3333333333333333</td>
+<td>0.3333333333333333</td>
+</tr>
+<tr>
+<td>new</td>
+<td>5</td>
+<td>7</td>
+<td>5</td>
+<td>0.4444444444444444</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>new</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>0.6666666666666666</td>
+<td>0.6666666666666666</td>
+</tr>
+<tr>
+<td>new</td>
+<td>8</td>
+<td>7</td>
+<td>8</td>
+<td>0.7777777777777778</td>
+<td>0.8333333333333334</td>
+</tr>
+<tr>
+<td>new</td>
+<td>9</td>
+<td>7</td>
+<td>9</td>
+<td>0.8888888888888888</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>0.1111111111111111</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>old</td>
+<td>6</td>
+<td>3</td>
+<td>6</td>
+<td>0.5555555555555556</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>old</td>
+<td>10</td>
+<td>3</td>
+<td>10</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody></table>
+<h3 id="增强的聚合-Cube和Grouping-和Rollup"><a href="#增强的聚合-Cube和Grouping-和Rollup" class="headerlink" title="增强的聚合 Cube和Grouping 和Rollup"></a>增强的聚合 Cube和Grouping 和Rollup</h3><p>这几个分析函数通常用于OLAP中，不能累加，而且需要根据不同维度上钻和下钻的指标统计，比如，分小时、天、月的UV数。</p>
+<p><strong>GROUPING SETS</strong><br>在一个GROUP BY查询中，根据不同的维度组合进行聚合，等价于将不同维度的GROUP BY结果集进行UNION ALL,<br>其中的GROUPING__ID，表示结果属于哪一个分组集合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">GROUPING</span> <span class="keyword">SETS</span>(user_type,sales) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">GROUPING</span> <span class="keyword">SETS</span>(user_type,sales,(user_type,sales)) </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CUBE</strong><br>根据GROUP BY的维度的所有组合进行聚合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">CUBE</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>user_type</th>
+<th>log_time</th>
+<th>pv</th>
+<th>grouping__id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NULL</td>
+<td>NULL</td>
+<td>10</td>
+<td>0</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-01</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-02</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-03</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-04</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-05</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-06</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-07</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>2019-07-17</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>new</td>
+<td>NULL</td>
+<td>7</td>
+<td>1</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-01</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-04</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-05</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-06</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-07</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>new</td>
+<td>2019-07-17</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>old</td>
+<td>NULL</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2019-07-02</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>old</td>
+<td>2019-07-03</td>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p><strong>ROLLUP</strong><br>是CUBE的子集，以最左侧的维度为主，从该维度进行层级聚合。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span></span><br><span class="line">    user_type,</span><br><span class="line">    sales,</span><br><span class="line">    <span class="keyword">count</span>(user_id) <span class="keyword">as</span> pv,</span><br><span class="line">    GROUPING__ID </span><br><span class="line"><span class="keyword">from</span> </span><br><span class="line">    order_detail</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> </span><br><span class="line">    user_type,sales</span><br><span class="line"><span class="keyword">WITH</span> <span class="keyword">ROLLUP</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> </span><br><span class="line">    GROUPING__ID;</span><br></pre></td></tr></table></figure>
+
+<p>题：</p>
+<ol>
+<li><p>设备总共使用天数和最早、最晚使用的用户和时间</p>
+</li>
+<li><p>设备连续使用最长的天数</p>
+</li>
+<li><p>前三天的销售额，后三天的销售额？</p>
+</li>
+<li><p>每5分钟统计前一小时的在线人数</p>
+</li>
+</ol>
+<hr>
+<p>参考：</p>
+<ol>
+<li><strong><a href="https://blog.csdn.net/scgaliguodong123_/article/details/60881166" target="_blank" rel="noopener">https://blog.csdn.net/scgaliguodong123_/article/details/60881166</a></strong> </li>
+<li><strong><a href="https://blog.csdn.net/scgaliguodong123_/article/details/60135385" target="_blank" rel="noopener">https://blog.csdn.net/scgaliguodong123_/article/details/60135385</a></strong></li>
+<li><strong><a href="https://dacoolbaby.iteye.com/blog/1960373" target="_blank" rel="noopener">https://dacoolbaby.iteye.com/blog/1960373</a></strong></li>
+<li><strong><a href="https://stackoverflow.com/questions/30809097/sum-over-a-date-range-per-group-in-hive" target="_blank" rel="noopener">https://stackoverflow.com/questions/30809097/sum-over-a-date-range-per-group-in-hive</a></strong></li>
+<li><a href="https://blog.csdn.net/Abysscarry/article/details/81408265" target="_blank" rel="noopener">https://blog.csdn.net/Abysscarry/article/details/81408265</a></li>
+<li><a href="http://lxw1234.com/archives/2015/07/367.htm" target="_blank" rel="noopener">http://lxw1234.com/archives/2015/07/367.htm</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+WindowingAndAnalytics" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/Hive/LanguageManual+WindowingAndAnalytics</a></li>
+</ol>
+
+          
         
       
     </div>
+
+    
+      
+
+
+    
+
     
     
     
@@ -1241,9 +2309,6 @@ LEAD(co
           </div>
           
 
-
-          
-
         </div>
         
           
@@ -1276,83 +2341,64 @@ LEAD(co
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
           
-
-          <div class="links-of-author motion-element">
-            
+            <nav class="site-state motion-element">
               
-                <span class="links-of-author-item">
-                  <a href="https://github.com/gofreehj" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:gofreehj@163.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                友情链接
-              </div>
-              <ul class="links-of-blogroll-list">
+                <div class="site-state-item site-state-posts">
                 
-                  <li class="links-of-blogroll-item">
-                    <a href="https://github.com/gofreehj" title="GitHub" target="_blank">GitHub</a>
-                  </li>
+                  <a href="/archives/">
                 
-              </ul>
-            </div>
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
           
 
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
           
 
         </div>
@@ -1372,35 +2418,33 @@ LEAD(co
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">WHJason</span>
 
   
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-area-chart"></i>
-    </span>
-    
-      <span class="post-meta-item-text">Site words total count&#58;</span>
-    
-    <span title="Site words total count">6.9k</span>
+
   
 </div>
 
 
+  
 
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a></div>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a></div>
 
 
 
 
         
+
 
 
 
@@ -1441,15 +2485,16 @@ LEAD(co
 
 
 
-  
 
 
 
 
 
 
-  
-  
+
+
+
+
 
 
 
@@ -1464,16 +2509,6 @@ LEAD(co
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -1482,28 +2517,13 @@ LEAD(co
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/three.min.js"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
-  
-
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
@@ -1515,16 +2535,11 @@ LEAD(co
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
-
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
   
-
-
-  
-
 
 
 
@@ -1551,348 +2566,7 @@ LEAD(co
 
 
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
   
-  <script type="text/javascript">
-    var GUEST = ['nick','mail','link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item=>{
-      return GUEST.indexOf(item)>-1;
-    });
-    new Valine({
-        el: '#comments' ,
-        verify: false,
-        notify: false,
-        appId: 'bzjPPVRfRtfwsArhsxdPgDmk-gzGzoHsz',
-        appKey: 'g6ccF1TQOytc2mep3ufPX416',
-        placeholder: '走过路过，不留下点什么吗',
-        avatar:'mm',
-        guest_info:guest,
-        pageSize:'10' || 10,
-    });
-  </script>
-
-
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
 
@@ -1902,7 +2576,7 @@ LEAD(co
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("bzjPPVRfRtfwsArhsxdPgDmk-gzGzoHsz", "g6ccF1TQOytc2mep3ufPX416");</script>
+  <script>AV.initialize("", "");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
@@ -1958,35 +2632,40 @@ LEAD(co
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text(counter.get('time'));
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
           }
         },
         error: function(error) {
@@ -2012,17 +2691,31 @@ LEAD(co
   
 
   
+
+  
   
 
   
 
   
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=5.1.3"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.3.0"></script>
 
 
   
 
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script type="text/javascript">
+  
+    bookmark.loadBookmark();
+  
+  </script>
+
+
+  
 
 </body>
 </html>
