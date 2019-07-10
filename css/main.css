@@ -157,7 +157,7 @@ body {
   font-size: 14px;
   line-height: 2;
   color: #555;
-  background: #fff;
+  background: rgba(255,255,255,0.13);
 }
 @media (max-width: 991px) {
   body {
@@ -448,11 +448,11 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: 700px;
+  width: 8000px;
 }
 @media (min-width: 1200px) {
   .container .header-inner {
-    width: 800px;
+    width: 1000px;
   }
 }
 @media (min-width: 1600px) {
@@ -462,11 +462,11 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: 700px;
+  width: 8000px;
 }
 @media (min-width: 1200px) {
   .container .main-inner {
-    width: 800px;
+    width: 1000px;
   }
 }
 @media (min-width: 1600px) {
@@ -480,11 +480,11 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 0px auto;
-  width: 700px;
+  width: 8000px;
 }
 @media (min-width: 1200px) {
   .container .footer-inner {
-    width: 800px;
+    width: 1000px;
   }
 }
 @media (min-width: 1600px) {
@@ -502,7 +502,7 @@ pre,
 }
 pre,
 code {
-  font-family: 'PT Mono', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: "Roboto Slab", "PT Mono", Monaco, Menlo, monospace;
 }
 code {
   overflow-wrap: break-word;
@@ -1095,7 +1095,7 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #222;
+  background: transparent;
   border-bottom: none;
 }
 .brand:hover {
@@ -1111,9 +1111,9 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 20px;
+  font-size: 80px;
   font-weight: normal;
-  font-family: 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Times New Roman', 'Roboto Slab', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1195,7 +1195,7 @@ pre .javascript .function {
 }
 .menu .menu-item a:hover,
 .menu .menu-item span.exturl:hover {
-  border-bottom-color: #222;
+  border-bottom-color: $title-hover-bg;
 }
 .menu .menu-item .fa {
   margin-right: 5px;
@@ -1435,7 +1435,7 @@ pre .javascript .function {
 .posts-expand .post-title-link {
   display: inline-block;
   position: relative;
-  color: #555;
+  color: rgba(0,0,0,0.9);
   border-bottom: none;
   line-height: 1.2;
   vertical-align: top;
@@ -1620,7 +1620,7 @@ pre .javascript .function {
 .sidebar a,
 .sidebar span.exturl {
   color: #999;
-  border-bottom-color: #555;
+  border-bottom-color: rgba(0,0,0,0.9);
 }
 .sidebar a:hover,
 .sidebar span.exturl:hover {
@@ -1720,7 +1720,7 @@ pre .javascript .function {
   vertical-align: middle;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-bottom-color: #555;
+  border-bottom-color: rgba(0,0,0,0.9);
   font-size: 13px;
 }
 .links-of-author a:before,
@@ -1732,7 +1732,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7fff42;
+  background: #a85d3e;
 }
 .feed-link,
 .chat {
@@ -2112,7 +2112,7 @@ pre .javascript .function {
   width: 10px;
   height: 10px;
   opacity: 0.5;
-  background: #555;
+  background: rgba(0,0,0,0.9);
   border: 1px solid #fff;
   border-radius: 50%;
 }
@@ -2379,7 +2379,7 @@ embed {
 .menu-item-active a,
 .menu .menu-item a:hover,
 .menu .menu-item span.exturl:hover {
-  border-bottom-color: #222 !important;
+  border-bottom-color: $title-hover-bg !important;
   color: #222;
 }
 @media (max-width: 767px) {
@@ -2472,6 +2472,14 @@ embed {
     float: none;
   }
 }
+.site-title {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 36px;
+  font-size: 48px;
+  font-weight: normal;
+  font-family: "Input Mono", "PT Mono", Consolas, Monaco, Menlo, monospace;
+}
 .menu .menu-item {
   display: inline-block;
   margin: 0 10px;
@@ -2488,7 +2496,7 @@ embed {
   margin-left: 5px;
   font-weight: 700;
   line-height: 1;
-  color: #555;
+  color: rgba(0,0,0,0.9);
   text-align: center;
   white-space: nowrap;
   background-color: #fff;
@@ -2522,8 +2530,8 @@ embed {
   transition-delay: 0s;
 }
 .menu .menu-item a:hover {
-  border-bottom-color: #222;
-  color: #222;
+  border-bottom-color: $title-hover-bg;
+  color: $title-hover-bg;
 }
 @media (max-width: 767px) {
   .menu .menu-item a {
