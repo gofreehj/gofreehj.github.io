@@ -1,3 +1,12 @@
+---
+title: 抽象和接口
+date: 2019-11-18 12:33:48
+tags: 
+    - java
+categories: 
+    - java
+---
+
 > 参考：
 >
 > https://www.cnblogs.com/xiaoxi/p/6599843.html
