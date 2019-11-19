@@ -1,10 +1,11 @@
 ---
 title: 抽象和接口
+tags:
+  - java
+categories:
+  - java
+toc: false
 date: 2019-11-18 12:33:48
-tags: 
-    - java
-categories: 
-    - java
 ---
 
 > 参考：
@@ -140,4 +141,3 @@ class AlarmDoor extends Door implements Alarm {
 } 
 
 ```
-
